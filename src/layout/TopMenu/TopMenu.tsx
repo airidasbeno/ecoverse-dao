@@ -47,8 +47,8 @@ const TopMenu: FC = () => {
                         <Link to="/profile">Profile</Link>
                     </Menu.Item>
                 </Menu>
-                <ChainSelector/>
-                <ConnectAccount/>
+                <ChainSelector />
+                <ConnectAccount />
             </div>
         </Header>
     );

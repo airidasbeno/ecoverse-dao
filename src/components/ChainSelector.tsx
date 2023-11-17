@@ -26,7 +26,8 @@ const styles = {
         alignItems: "center",
         height: "42px",
         border: "0",
-        borderRadius: "10px"
+        borderRadius: "10px",
+        margin: '0 10px',
     }
 };
 
