@@ -2,13 +2,11 @@ import {useCallback} from "react";
 
 import {Modal, Divider, message} from "antd";
 
-import coinbase_Logo from "assets/logos/coinbase-logo.png";
-import metamask_Logo from "assets/logos/metamask-logo.svg";
-import walletconnect_Logo from "assets/logos/walletconnect-logo.svg";
-import {hooks as coinbaseWallethooks, coinbaseWallet} from "connectors/coinbaseWallet";
+import metamaskLogo from "assets/logos/metamask-logo.svg";
+import walletConnectLogo from "assets/logos/walletconnect-logo.svg";
 import {getName} from "connectors/getConnectorName";
-import {hooks as metaMaskhooks, metaMask} from "connectors/metaMask";
-import {hooks as walletConnecthooks, walletConnect} from "connectors/walletConnect";
+import {hooks as metaMaskHooks, metaMask} from "connectors/metaMask";
+import {hooks as walletConnectHooks, walletConnect} from "connectors/walletConnect";
 
 import ConnectButton from "./ConnectButton";
 
@@ -28,14 +26,12 @@ interface ConnectModalProps {
     setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const {useIsActivating: useMMIsActivating} = metaMaskhooks;
-const {useIsActivating: useWCIsActivating} = walletConnecthooks;
-const {useIsActivating: useCBIsActivating} = coinbaseWallethooks;
+const {useIsActivating: useMMIsActivating} = metaMaskHooks;
+const {useIsActivating: useWCIsActivating} = walletConnectHooks;
 
 const ConnectModal: React.FC<ConnectModalProps> = ({isModalOpen, setIsModalOpen}) => {
     const isMMActivating = useMMIsActivating();
     const isWCActivating = useWCIsActivating();
-    const isCBActivating = useCBIsActivating();
 
     const activateConnector = useCallback(async (label: string) => {
         try {
@@ -48,11 +44,6 @@ const ConnectModal: React.FC<ConnectModalProps> = ({isModalOpen, setIsModalOpen}
                 case "WalletConnect":
                     await walletConnect.activate();
                     window.localStorage.setItem("connectorId", getName(walletConnect));
-                    break;
-
-                case "Coinbase Wallet":
-                    await coinbaseWallet.activate();
-                    window.localStorage.setItem("connectorId", getName(coinbaseWallet));
                     break;
 
                 default:
@@ -82,24 +73,18 @@ const ConnectModal: React.FC<ConnectModalProps> = ({isModalOpen, setIsModalOpen}
             <div style={{display: "flex", flexDirection: "column"}}>
                 <ConnectButton
                     label="MetaMask"
-                    image={metamask_Logo}
+                    image={metamaskLogo}
                     onClick={() => activateConnector("MetaMask")}
                     loading={isMMActivating}
                 />
 
                 <ConnectButton
                     label="WalletConnect"
-                    image={walletconnect_Logo}
+                    image={walletConnectLogo}
                     onClick={() => activateConnector("WalletConnect")}
                     loading={isWCActivating}
                 />
 
-                <ConnectButton
-                    label="Coinbase Wallet"
-                    image={coinbase_Logo}
-                    onClick={() => activateConnector("Coinbase Wallet")}
-                    loading={isCBActivating}
-                />
                 <Divider/>
                 <div style={{margin: "auto", fontSize: "13px", marginBottom: "15px"}}>
                     Need help installing a wallet?{" "}

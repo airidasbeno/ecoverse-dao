@@ -11,9 +11,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "5.2.6",
-    "@coinbase/wallet-sdk": "3.7.2",
     "@walletconnect/ethereum-provider": "2.10.2",
-    "@web3-react/coinbase-wallet": "8.2.3",
     "@web3-react/core": "8.2.3",
     "@web3-react/metamask": "8.2.4",
     "@web3-react/network": "8.2.3",
