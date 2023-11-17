@@ -1,9 +1,10 @@
 import React from 'react';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
-import {Button, Col, DatePicker, Form, Input, Row, Steps} from 'antd';
+import {Button, Col, DatePicker, Form, Input, Row} from 'antd';
 import TextArea from "antd/es/input/TextArea";
 import {RangePickerProps} from "antd/es/date-picker";
+import ProgressSteps from "./partials/ProgressSteps";
 
 const onFinish = (values: any) => {
     console.log('Success:', values);
@@ -44,27 +45,7 @@ type FieldType = {
 
 const CreateCampaign: React.FC = () => (
     <>
-        <Row>
-            <Col span={16} offset={4}>
-                <Steps
-                    current={1}
-                    items={[
-                        {
-                            title: 'Stage 1',
-                            description: 'Enter basic details.',
-                        },
-                        {
-                            title: 'Stage 2',
-                            description: 'Add contract.',
-                        },
-                        {
-                            title: 'Stage 3',
-                            description: 'Finish it up.',
-                        },
-                    ]}
-                />
-            </Col>
-        </Row>
+        <ProgressSteps />
         <Row>
             <Col span={12} offset={6}>
                 <h1>Create a Campaign</h1>
