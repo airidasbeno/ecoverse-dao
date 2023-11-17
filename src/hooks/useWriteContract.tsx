@@ -20,7 +20,7 @@ export const useWriteContract = () => {
                 message.info(`Success!\n\n${transactionHash}`);
             } catch (error: any) {
                 const message = error.reason ?? error.message ?? error;
-                message.error(`An error occured: ${message}`);
+                message.error(`An error occurred: ${message}`);
             } finally {
                 setLoading(false);
             }
@@ -51,7 +51,7 @@ export const useWriteContract = () => {
                 message.info(`Success!\n\nTx Hash: ${receipt?.transactionHash}`);
             } catch (error: any) {
                 const message = error.reason ?? error.message ?? error;
-                message.error(`An error occured: ${message}`);
+                message.error(`An error occurred: ${message}`);
             } finally {
                 setLoading(false);
             }

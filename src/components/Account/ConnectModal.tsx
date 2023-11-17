@@ -2,9 +2,9 @@ import {useCallback} from "react";
 
 import {Modal, Divider, message} from "antd";
 
-import coinbase_Logo from "assets/images/coinbase_Logo.png";
-import metamask_Logo from "assets/svg/metamask-logo.svg";
-import walletconnect_Logo from "assets/svg/walletconnect-logo.svg";
+import coinbase_Logo from "assets/logos/coinbase-logo.png";
+import metamask_Logo from "assets/logos/metamask-logo.svg";
+import walletconnect_Logo from "assets/logos/walletconnect-logo.svg";
 import {hooks as coinbaseWallethooks, coinbaseWallet} from "connectors/coinbaseWallet";
 import {getName} from "connectors/getConnectorName";
 import {hooks as metaMaskhooks, metaMask} from "connectors/metaMask";

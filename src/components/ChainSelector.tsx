@@ -5,13 +5,13 @@ import {useWeb3React} from "@web3-react/core";
 import {Dropdown, Button} from "antd";
 import type {MenuProps} from "antd";
 
-import arbitrum_Logo from "assets/images/arbitrum_Logo.png";
-import ethereum_Logo from "assets/images/ethereum_Logo.png";
-import fantom_Logo from "assets/images/fantom_Logo.png";
-import polygon_logo from "assets/images/polygon_logo.png";
-import zksync_Logo from "assets/images/zksync_Logo.png";
-import bsc_Logo from "assets/svg/bsc-logo.svg";
-import optimistim_Logo from "assets/svg/optimistim-logo.svg";
+import arbitrum_Logo from "assets/logos/arbitrum-logo.png";
+import ethereum_Logo from "assets/logos/ethereum-logo.png";
+import fantom_Logo from "assets/logos/fantom-logo.png";
+import polygon_logo from "assets/logos/polygon-logo.png";
+import zksync_Logo from "assets/logos/zksync-logo.png";
+import bsc_Logo from "assets/logos/bsc-logo.svg";
+import optimistim_Logo from "assets/logos/optimistim-logo.svg";
 import {chainIds} from "data/chainIds";
 import {useSwitchChain, useWindowWidthAndHeight} from "hooks";
 

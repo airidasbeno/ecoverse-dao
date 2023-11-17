@@ -20,9 +20,7 @@ export function useContract<Contract>(address: string, abi: ContractInterface) {
         throw Error(`Invalid 'address' parameter '${address}'.`);
     }
 
-    const contract = signerOrProvider
+    return signerOrProvider
         ? useMemo(() => getContract<Contract>(address, abi, signerOrProvider), [address, abi, signerOrProvider])
         : undefined;
-
-    return contract;
 }

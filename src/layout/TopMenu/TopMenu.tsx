@@ -1,6 +1,5 @@
 import {FC} from "react";
 import {Layout, Menu} from "antd";
-import web3Boilerplate_logo from "assets/images/web3Boilerplate_logo.png";
 import ConnectAccount from "components/Account/ConnectAccount";
 import ChainSelector from "components/ChainSelector";
 import {useWindowWidthAndHeight} from "hooks";
@@ -57,15 +56,16 @@ const TopMenu: FC = () => {
 export default TopMenu;
 
 export const Logo: FC = () => {
-    const {isMobile} = useWindowWidthAndHeight();
+    // const {isMobile} = useWindowWidthAndHeight();
     return (
+        <p>LOGO</p>
         // <div style={{ paddingTop: isMobile ? "25px" : "40px" }}>
-        <img
-            src={web3Boilerplate_logo}
-            alt="web3Boilerplate_logo"
-            height={'100%'}
-            width={isMobile ? "70px" : "90px"}
-        />
+        // <img
+        //     src={logo}
+        //     alt="logo"
+        //     height={'100%'}
+        //     width={isMobile ? "70px" : "90px"}
+        // />
         // </div>
     );
 };
