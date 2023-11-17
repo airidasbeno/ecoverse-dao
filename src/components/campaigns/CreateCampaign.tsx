@@ -91,7 +91,7 @@ const CreateCampaign: React.FC = () => (
 
                     <Form.Item wrapperCol={{offset: 12, span: 12}}>
                         <Button type="primary" htmlType="submit">
-                            Create
+                            Create Campaign
                         </Button>
                     </Form.Item>
                 </Form>
