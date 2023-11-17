@@ -1,8 +1,9 @@
 import React from 'react';
-import {useAccount} from "wagmi";
+import {useAccount, useChainId} from "wagmi";
 
 const Profile: React.FC = () => {
-    const { address, isConnected } = useAccount();
+    const { address, isConnected, connector  } = useAccount();
+    const connectedChainId = useChainId();
 
     return (
         <>
@@ -12,6 +13,13 @@ const Profile: React.FC = () => {
                 Your satisfaction is our promise!</p>
             <p>Status: {isConnected ? 'Connected' : 'Not Connected'}</p>
             <p>Address: {address}</p>
+
+            {connector?.chains.map((chain, index) => (
+                <p key={index}>
+                    <strong>{connectedChainId === chain.id ? 'Current - ' : ''}</strong>
+                    Blockchain: {chain.name} ({chain.id})
+                </p>
+            ))}
         </>
     );
 };

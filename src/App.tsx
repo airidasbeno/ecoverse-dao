@@ -14,6 +14,7 @@ import {CoinbaseWalletConnector} from 'wagmi/connectors/coinbaseWallet';
 import {InjectedConnector} from 'wagmi/connectors/injected';
 import {WalletConnectConnector} from 'wagmi/connectors/walletConnect';
 import {createWeb3Modal} from '@web3modal/wagmi/react';
+import Notifications from "./components/profile/Notifications";
 
 const styles = {
     layout: {
@@ -68,6 +69,7 @@ function App() {
                             <Routes>
                                 <Route path="/" element={<Marketplace/>}/>
                                 <Route path="/profile" element={<Profile/>}/>
+                                <Route path="/notifications" element={<Notifications/>}/>
                                 <Route path="/create" element={<CreateCampaign/>}/>
                             </Routes>
                         </MainContent>

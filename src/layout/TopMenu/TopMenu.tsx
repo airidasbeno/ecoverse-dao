@@ -55,6 +55,9 @@ const TopMenu: FC = () => {
                     <Menu.Item key="2" style={{minWidth: '150px', textAlign: 'center'}}>
                         <Link to="/profile">Profile</Link>
                     </Menu.Item>
+                    <Menu.Item key="3" style={{minWidth: '150px', textAlign: 'center'}}>
+                        <Link to="/notifications">Notifications</Link>
+                    </Menu.Item>
                 </Menu>
                 {!isConnected && (
                     <Button shape="round" type="primary" style={styles.button} onClick={() => open()}>
