@@ -1,8 +1,20 @@
 import React from 'react';
 import {Button} from 'antd';
 
-
 const styles = {
+    card: {
+        border: '1px solid #d3d3d3',
+        padding: '5px 15px',
+        margin: '10px',
+        textAlign: 'center',
+        borderRadius: '8px'
+    },
+    image: {
+        width: '100%',
+        borderRadius: '8px',
+        padding: '3px',
+        border: '1px solid #d3d3d3'
+    },
     button: {
         height: "40px",
         padding: "0 20px",
@@ -17,19 +29,15 @@ const styles = {
 
 const MarketplaceCard: React.FC = () => (
     <>
-        <div style={{
-            border: '1px solid #d3d3d3',
-            padding: '5px',
-            margin: '10px',
-            textAlign: 'center',
-            borderRadius: '8px'
-        }}>
-            <h2>asdasdasd</h2>
-            <p>asdasdasda sadas dasd asdas dasd</p>
-            <img src={'https://random.imagecdn.app/300/300'} alt={'aa'} width={'100%'}
-                 style={{borderRadius: '8px', padding: '3px', border: '1px solid #d3d3d3'}}/>
+        <div style={styles.card}>
+            <h2>Campaign Title</h2>
+            <p>Campaign short description, Campaign short description...</p>
+            <img src={'https://random.imagecdn.app/200/150'}
+                 alt={'Campaign Title'}
+                 title={"Campaign Title"}
+                 style={styles.image}/>
             <Button shape="round" type="primary" style={styles.button}>
-                Action
+                View Campaign
             </Button>
         </div>
     </>
