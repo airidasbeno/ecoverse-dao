@@ -2,7 +2,6 @@ import {Buffer} from "buffer";
 import {Layout, ConfigProvider, theme} from "antd";
 import {TopMenu, MainContent} from "layout";
 import "styles/App.css";
-import Campaigns from "./components/Campaigns/Campaigns";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Marketplace from "./components/Marketplace/Marketplace";
 import Profile from "./components/Profile/Profile";
@@ -31,7 +30,6 @@ function App() {
                     <MainContent>
                         <Routes>
                             <Route path="/" element={<Marketplace/>}/>
-                            <Route path="/campaigns" element={<Campaigns/>}/>
                             <Route path="/profile" element={<Profile/>}/>
                         </Routes>
                     </MainContent>

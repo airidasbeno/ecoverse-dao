@@ -40,9 +40,6 @@ const TopMenu: FC = () => {
                         <Link to="/">Marketplace</Link>
                     </Menu.Item>
                     <Menu.Item key="2" style={{minWidth: '150px', textAlign: 'center'}}>
-                        <Link to="/campaigns">Campaigns</Link>
-                    </Menu.Item>
-                    <Menu.Item key="3" style={{minWidth: '150px', textAlign: 'center'}}>
                         <Link to="/profile">Profile</Link>
                     </Menu.Item>
                 </Menu>
