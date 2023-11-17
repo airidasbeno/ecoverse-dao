@@ -2,10 +2,10 @@ import {Buffer} from "buffer";
 import {Layout, ConfigProvider, theme} from "antd";
 import {TopMenu, MainContent} from "layout";
 import "styles/App.css";
-import Campaigns from "./components/campaigns/Campaigns";
+import Campaigns from "./components/Campaigns/Campaigns";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import Marketplace from "./components/campaigns/Marketplace";
-import Profile from "./components/campaigns/Profile";
+import Marketplace from "./components/Marketplace/Marketplace";
+import Profile from "./components/Profile/Profile";
 
 const styles = {
     layout: {

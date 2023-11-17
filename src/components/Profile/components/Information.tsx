@@ -21,7 +21,7 @@ const styles = {
     }
 } as const;
 
-const Infos = ({chainId}: { chainId: ReturnType<Web3ReactHooks["useChainId"]> }) => {
+const Information = ({chainId}: { chainId: ReturnType<Web3ReactHooks["useChainId"]> }) => {
     const {account, provider} = useWeb3React();
     const balance = useNativeBalance(provider, account);
     const {isMobile} = useWindowWidthAndHeight();
@@ -68,4 +68,4 @@ const Infos = ({chainId}: { chainId: ReturnType<Web3ReactHooks["useChainId"]> })
     );
 };
 
-export default Infos;
+export default Information;
