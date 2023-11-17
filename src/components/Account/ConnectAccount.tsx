@@ -11,6 +11,7 @@ import {getEllipsisTxt} from "utils/formatters";
 import ConnectModal from "./ConnectModal";
 import DisconnectModal from "./DisconnectModal";
 import Jazzicons from "../Jazzicons";
+import {Link} from "react-router-dom";
 
 const styles = {
     account: {
@@ -27,7 +28,7 @@ const styles = {
         fontWeight: "600",
         letterSpacing: "0.2px",
         fontSize: "15px",
-        marginLeft: "20px",
+        marginLeft: "10px",
         border: "none",
     },
     modalTitle: {
@@ -84,6 +85,10 @@ const ConnectAccount: React.FC<WantedChain> = () => {
                             <p style={{marginRight: "5px"}}>{getEllipsisTxt(account, isMobile ? 3 : 6)}</p>
                         )}
                         <Jazzicons seed={account}/>
+                    </Button>
+
+                    <Button shape="round" type="primary" style={styles.button}>
+                        <Link to="/create">Create Campaign</Link>
                     </Button>
 
                     <DisconnectModal isModalOpen={isModalVisible} setIsModalOpen={setIsModalVisible}

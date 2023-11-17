@@ -5,6 +5,7 @@ import "styles/App.css";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Marketplace from "./components/Marketplace/Marketplace";
 import Profile from "./components/Profile/Profile";
+import CreateCampaign from "./components/Campaigns/CreateCampaign";
 
 const styles = {
     layout: {
@@ -31,6 +32,7 @@ function App() {
                         <Routes>
                             <Route path="/" element={<Marketplace/>}/>
                             <Route path="/profile" element={<Profile/>}/>
+                            <Route path="/create" element={<CreateCampaign/>}/>
                         </Routes>
                     </MainContent>
                 </Layout>
