@@ -8,7 +8,7 @@ import {getName} from "connectors/getConnectorName";
 import {hooks as metaMaskHooks, metaMask} from "connectors/metaMask";
 import {hooks as walletConnectHooks, walletConnect} from "connectors/walletConnect";
 
-import ConnectButton from "./ConnectButton";
+import ConnectButton from "../../layout/TopMenu/partials/ConnectButton";
 
 const styles = {
     modalTitle: {

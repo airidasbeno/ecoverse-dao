@@ -8,9 +8,9 @@ import {walletConnect} from "connectors/walletConnect";
 import {useWindowWidthAndHeight} from "hooks";
 import {getEllipsisTxt} from "utils/formatters";
 
-import ConnectModal from "./ConnectModal";
-import DisconnectModal from "./DisconnectModal";
-import Jazzicons from "../Jazzicons";
+import ConnectModal from "../../../components/modals/ConnectModal";
+import DisconnectModal from "../../../components/modals/DisconnectModal";
+import JazzIcons from "../../../components/JazzIcons";
 import {Link} from "react-router-dom";
 
 const styles = {
@@ -84,7 +84,7 @@ const ConnectAccount: React.FC<WantedChain> = () => {
                         {account && typeof account === "string" && (
                             <p style={{marginRight: "5px"}}>{getEllipsisTxt(account, isMobile ? 3 : 6)}</p>
                         )}
-                        <Jazzicons seed={account}/>
+                        <JazzIcons seed={account}/>
                     </Button>
 
                     <Button shape="round" type="primary" style={styles.button}>

@@ -5,7 +5,7 @@ import {Skeleton} from "antd";
 
 import {getEllipsisTxt} from "utils/formatters";
 
-import Jazzicons from "../Jazzicons";
+import JazzIcons from "../../JazzIcons";
 
 const styles = {
     addressBox: {
@@ -77,10 +77,10 @@ const Address: React.FC<AddressProps> = (props) => {
     return (
         <div style={{...styles.addressBox, ...props.style}}>
             <div style={styles.address}>
-                {props.avatar === "left" && <Jazzicons seed={address}/>}
+                {props.avatar === "left" && <JazzIcons seed={address}/>}
                 <p>{props.size ? getEllipsisTxt(address, props.size) : address}</p>
             </div>
-            {props.avatar === "right" && <Jazzicons seed={address}/>}
+            {props.avatar === "right" && <JazzIcons seed={address}/>}
             {props.copyable && (isClicked ? <Check/> : <Copy/>)}
         </div>
     );

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Information, Status} from "./components";
+import {Information, Status} from "./partials";
 import {useWeb3React} from "@web3-react/core";
 
 const Profile: React.FC = () => {

@@ -1,7 +1,7 @@
 import {FC} from "react";
 import {Layout, Menu} from "antd";
-import ConnectAccount from "components/Account/ConnectAccount";
-import ChainSelector from "components/ChainSelector";
+import ConnectAccount from "layout/TopMenu/partials/ConnectAccount";
+import ChainSelector from "layout/TopMenu/partials/ChainSelector";
 import {useWindowWidthAndHeight} from "hooks";
 import {Link} from "react-router-dom";
 

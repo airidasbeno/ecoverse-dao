@@ -6,7 +6,7 @@ import {Input, InputRef} from "antd";
 
 import {getEllipsisTxt} from "utils/formatters";
 
-import Jazzicons from "./Jazzicons";
+import JazzIcons from "../../JazzIcons";
 
 export interface AddressInputProps {
     address?: string;
@@ -98,7 +98,7 @@ const AddressInput: React.FC<AddressInputProps> = (props) => {
             placeholder={props.placeholder ? props.placeholder : "Public address"}
             prefix={
                 isDomain || address.length === 42 ? (
-                    <Jazzicons seed={(isDomain ? validatedAddress : address).toLowerCase()}/>
+                    <JazzIcons seed={(isDomain ? validatedAddress : address).toLowerCase()}/>
                 ) : (
                     <SearchOutlined/>
                 )
