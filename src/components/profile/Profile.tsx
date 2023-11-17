@@ -1,6 +1,10 @@
 import React from 'react';
 import {Information, Status} from "./partials";
 import {useWeb3React} from "@web3-react/core";
+import MarketplaceCard from "./partials/ProfileCard";
+import {Col, Row} from 'antd';
+
+
 
 const Profile: React.FC = () => {
     const {isActivating, isActive, chainId} = useWeb3React();
@@ -13,7 +17,17 @@ const Profile: React.FC = () => {
                 Your satisfaction is our promise!</p>
             <Status isActivating={isActivating} isActive={isActive} />
             <Information chainId={chainId} />
+            <h2>Your Current Campaigns</h2>
+            <Row>
+                <Col span={6}>
+                    <MarketplaceCard />
+                </Col>
+                <Col span={6}>
+                    <MarketplaceCard />
+                </Col>
+            </Row>
         </>
+        
     );
 };
 export default Profile;
