@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {Col, Row, Steps} from 'antd';
 
 const ProgressSteps: React.FC = () => (

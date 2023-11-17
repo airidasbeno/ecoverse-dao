@@ -1,4 +1,4 @@
-import {FC} from "react";
+import React, {FC} from "react";
 
 import {useWindowWidthAndHeight} from "hooks";
 
@@ -8,12 +8,8 @@ type MainContentProps = {
 
 const styles = {
     content: {
-        // display: "flex",
-        // justifyContent: "center",
-        // alignItems: "flex-start",
         marginTop: "50px",
         padding: "50px",
-        // overflow: "auto"
     },
     contentMobile: {
         display: "flex",
