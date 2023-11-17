@@ -13,7 +13,7 @@ const styles = {
         height: "100vh",
         overflow: "auto",
         fontFamily: "Sora, sans-serif"
-    }sddd
+    }
 } as const;
 
 function App() {
