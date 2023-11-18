@@ -26,7 +26,6 @@ const styles = {
 } as const;
 
 const CampaignCard: React.FC = () => {
-
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     const handleViewCampaignClick = () => {

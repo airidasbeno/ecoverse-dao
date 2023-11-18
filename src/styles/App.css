@@ -161,3 +161,11 @@ body {
     display: flex;
     align-items: center;
 }
+
+.ant-spin {
+    color: #004517;
+}
+
+.ant-spin .ant-spin-dot-item {
+    background-color: #004517;
+}
