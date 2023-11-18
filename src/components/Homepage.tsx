@@ -1,6 +1,5 @@
 import React from 'react';
 import HeroSection from "./homepage/HeroSection";
-import AboutUs from "./homepage/AboutUs";
 import OurMission from "./homepage/OurMission";
 
 const Homepage: React.FC = () => {
@@ -8,7 +7,6 @@ const Homepage: React.FC = () => {
         <>
             <HeroSection />
             <OurMission />
-            <AboutUs />
         </>
     )
 }

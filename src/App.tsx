@@ -43,7 +43,7 @@ const metadata = {
     name: 'EcoVerse DAO',
     description: 'EcoVerse DAO - Empowering Earth, Enabling Change',
     url: 'https://hackathon-front-end-eta.vercel.app',
-    icons: ['https://avatars.githubusercontent.com/u/37784886']
+    icons: ['https://ecoverse-dao.vercel.app/static/media/ecoversedoa-logo.50b881f8da27ac0ea5aa.png']
 };
 
 const wagmiConfig = createConfig({

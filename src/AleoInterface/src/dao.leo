@@ -36,6 +36,7 @@ program dao.aleo {
             info,
         } then finalize(id);
     }
+
     finalize propose(public id: field) {
         Mapping::set(tickets, id, 0u64);
     }
@@ -50,6 +51,7 @@ program dao.aleo {
             pid,
         } then finalize(pid);
     }
+
     finalize new_ticket(public pid: field) {
         let current: u64 = Mapping::get_or_use(tickets, pid, 0u64);
         Mapping::set(tickets, pid, current + 1u64);
@@ -58,6 +60,7 @@ program dao.aleo {
     transition agree(ticket: Ticket) {
         return then finalize(ticket.pid);
     }
+
     finalize agree(public pid: field) {
         let current: u64 = Mapping::get_or_use(agree_votes, pid, 0u64);
         Mapping::set(agree_votes, pid, current + 1u64);
@@ -66,6 +69,7 @@ program dao.aleo {
     transition disagree(ticket: Ticket) {
         return then finalize(ticket.pid);
     }
+
     finalize disagree(pid: field) {
         let current: u64 = Mapping::get_or_use(disagree_votes, pid, 0u64);
         Mapping::set(disagree_votes, pid, current + 1u64);

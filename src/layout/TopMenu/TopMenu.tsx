@@ -4,7 +4,7 @@ import { useWindowWidthAndHeight } from "hooks";
 import { Link } from "react-router-dom";
 import { useWeb3Modal } from '@web3modal/wagmi/react';
 import { useAccount } from "wagmi";
-import logo from "assets/logos/ecoversedoa_logo.png";
+import logo from "assets/images/ecoversedoa-logo.png";
 
 const { Header } = Layout;
 
@@ -17,7 +17,7 @@ const styles = {
         width: "100%",
         backgroundColor: "#f5f5f5",
         paddingTop: "15px",
-        zIndex: 1,
+        zIndex: 2,
         boxShadow: '0 0 5px rgba(0, 0, 0, 0.2)',
     },
     headerRight: {
@@ -80,8 +80,8 @@ const TopMenu: FC = () => {
                     </Button>
                 )}
                 {isConnected && (
-                    <Button shape="round" type="primary" style={styles.button} onClick={() => open({ view: 'Account' })}>
-                        Connected Wallet
+                    <Button shape="round" type="default" style={styles.button} onClick={() => open({ view: 'Account' })}>
+                        Wallet Connected
                     </Button>
                 )}
                 {isConnected && (
