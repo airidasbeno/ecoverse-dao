@@ -1,8 +1,8 @@
 import React from 'react';
 import {Button, Col, Row} from 'antd';
 import CampaignCard from "./campaigns/partials/CampaignCard";
-import {useAccount} from "wagmi";
-import {useWeb3Modal} from '@web3modal/wagmi/react';
+import { useAccount } from "wagmi";
+import { useWeb3Modal } from '@web3modal/wagmi/react';
 
 const styles = {
     button: {

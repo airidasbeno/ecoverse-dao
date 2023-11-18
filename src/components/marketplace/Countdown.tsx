@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Countdown: React.FC = () => {
     const [countdown, setCountdown] = useState(4 * 24 * 60 * 60 * 1000);

@@ -39,9 +39,9 @@ const { chains, publicClient } = configureChains(
 );
 
 const metadata = {
-    name: 'Web3Modal',
-    description: 'Web3Modal Example',
-    url: 'https://web3modal.com',
+    name: 'EcoVerse DAO',
+    description: 'EcoVerse DAO - Empowering earth, enabling change',
+    url: 'https://hackathon-front-end-eta.vercel.app',
     icons: ['https://avatars.githubusercontent.com/u/37784886']
 };
 
