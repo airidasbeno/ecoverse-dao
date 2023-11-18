@@ -14,6 +14,14 @@ import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { createWeb3Modal } from '@web3modal/wagmi/react';
+import { configureChains, createConfig, WagmiConfig } from "wagmi";
+import { mainnet, sepolia, goerli, scrollSepolia } from "viem/chains";
+import { EIP6963Connector, walletConnectProvider } from "@web3modal/wagmi";
+import { publicProvider } from 'wagmi/providers/public';
+import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
+import { InjectedConnector } from 'wagmi/connectors/injected';
+import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
+import { createWeb3Modal } from '@web3modal/wagmi/react';
 import Notifications from "./components/profile/Notifications";
 
 const styles = {

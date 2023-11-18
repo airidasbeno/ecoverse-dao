@@ -5,21 +5,17 @@ import {Col, Row, Steps} from 'antd';
 const ProgressSteps: React.FC = () => (
     <>
         <Row>
-            <Col span={16} offset={4}>
+            <Col span={12} offset={6}>
                 <Steps
-                    current={1}
+                    current={0}
                     items={[
                         {
                             title: 'Stage 1',
-                            description: 'Enter basic details.',
+                            description: 'Create a Campaign',
                         },
                         {
                             title: 'Stage 2',
-                            description: 'Add contract.',
-                        },
-                        {
-                            title: 'Stage 3',
-                            description: 'Finish it up.',
+                            description: 'Add to marketplace',
                         },
                     ]}
                 />
