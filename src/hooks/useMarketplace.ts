@@ -13,7 +13,7 @@ export interface Listing {
 
 const contractAddreses:  { [key: number]: string }= {
     5: "0xF6466904489b4b2cf375FE26d8Ac297Cfc6f49dF",
-    111: "",
+    534351: "0xB16d8FBFaB7439C562A37378fbF276183D304B28",
 }
 
 
