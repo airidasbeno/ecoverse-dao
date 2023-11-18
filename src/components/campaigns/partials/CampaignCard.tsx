@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Button} from 'antd';
-import ViewCampaign from "../../campaigns/ViewCampaign";
+import ViewCampaign from "./ViewCampaign";
 import {Link} from "react-router-dom";
 
 const styles = {
