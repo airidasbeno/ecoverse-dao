@@ -7,17 +7,17 @@ import { useWeb3Modal } from '@web3modal/wagmi/react';
 
 const styles = {
     card: {
-        border: '1px solid #d3d3d3',
         padding: '5px 15px',
         margin: '10px',
         textAlign: 'center',
-        borderRadius: '8px'
+        borderRadius: '10px',
+        backgroundColor: 'white',
     },
     image: {
         width: '100%',
         borderRadius: '8px',
         padding: '3px',
-        border: '1px solid #d3d3d3'
+        border: '1px solid #c3c3c3'
     },
     button: {
         height: "40px",

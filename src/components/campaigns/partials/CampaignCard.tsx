@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 
 const styles = {
     card: {
-        border: '1px solid #d3d3d3',
         padding: '5px 15px',
         margin: '10px',
         textAlign: 'center',
-        borderRadius: '8px'
+        borderRadius: '10px',
+        backgroundColor: 'white',
     },
     image: {
         width: '100%',
