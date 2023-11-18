@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Button, Layout, Menu } from "antd";
 import { useWindowWidthAndHeight } from "hooks";
 import { Link } from "react-router-dom";
-import { useWeb3Modal } from '@web3modal/wagmi/react'
+import { useWeb3Modal } from '@web3modal/wagmi/react';
 import { useAccount } from "wagmi";
 
 const { Header } = Layout;

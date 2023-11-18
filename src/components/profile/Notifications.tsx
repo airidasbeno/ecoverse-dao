@@ -4,9 +4,10 @@ import {
     useInitWeb3InboxClient,
     useMessages
 } from '@web3inbox/widget-react'
-import React, { useCallback, useEffect } from 'react';
-import { useSignMessage, useAccount, useChainId } from 'wagmi';
-import { Table, Button, Card, Row, Col, Tag } from 'antd';
+import React, {useCallback, useEffect} from 'react';
+import {useSignMessage, useAccount, useChainId} from 'wagmi';
+import {Table, Button, Card, Row, Col, Tag} from 'antd';
+import { useWeb3Modal } from '@web3modal/wagmi/react'
 
 const styles = {
     button: {
@@ -29,18 +30,19 @@ const styles = {
 } as const;
 
 const Notifications: React.FC = () => {
-    const { address, isConnected, connector } = useAccount();
+    const {address, isConnected, connector} = useAccount();
     const connectedChainId = useChainId();
-    const { signMessageAsync } = useSignMessage();
+    const {signMessageAsync} = useSignMessage();
+    const { open } = useWeb3Modal();
 
     const projectId = process.env.REACT_APP_WALLETCONNECT_PROJECT_ID ?? '';
-    const isReady = useInitWeb3InboxClient({
+    useInitWeb3InboxClient({
         projectId,
         domain: process.env.REACT_APP_WALLETCONNECT_DOMAIN ?? '',
         isLimited: false
     })
 
-    const { account, setAccount, isRegistered, isRegistering, register } = useW3iAccount()
+    const {account, setAccount, isRegistered, isRegistering, register} = useW3iAccount()
     useEffect(() => {
         if (!address) return
         setAccount(`eip155:1:${address}`)
@@ -49,7 +51,7 @@ const Notifications: React.FC = () => {
     const performRegistration = useCallback(async () => {
         if (!address) return
         try {
-            await register(message => signMessageAsync({ message }))
+            await register(message => signMessageAsync({message}))
         } catch (registerIdentityError) {
             alert(registerIdentityError)
         }
@@ -59,7 +61,7 @@ const Notifications: React.FC = () => {
         performRegistration()
     }, [performRegistration])
 
-    const { isSubscribed, isSubscribing, subscribe, isUnsubscribing, unsubscribe } = useManageSubscription()
+    const {isSubscribed, isSubscribing, subscribe, isUnsubscribing, unsubscribe} = useManageSubscription()
 
     const performSubscribe = useCallback(async () => {
         await performRegistration()
@@ -70,7 +72,7 @@ const Notifications: React.FC = () => {
         await unsubscribe()
     }, [unsubscribe, isRegistered])
 
-    const { messages } = useMessages()
+    const {messages} = useMessages()
 
     const columns = [
         {
@@ -98,7 +100,8 @@ const Notifications: React.FC = () => {
                     const urlObj = JSON.parse(text)
                     console.log("urlObj", urlObj)
                     return (
-                        <Button shape="round" size="small" type="primary" style={styles.button} onClick={() => window.open(urlObj.contract, "_blank")}>{urlObj.title}</Button>
+                        <Button shape="round" size="small" type="primary" style={styles.button}
+                                onClick={() => window.open(urlObj.contract, "_blank")}>{urlObj.title}</Button>
                     )
                 } else {
                     return (
@@ -118,7 +121,7 @@ const Notifications: React.FC = () => {
             title: 'ID',
             dataIndex: 'id',
             key: 'id',
-            style: { background: '#4caf50' }
+            style: {background: '#4caf50'}
         },
     ];
     const getRowClassName = (record: { id: number }) => {
@@ -132,84 +135,86 @@ const Notifications: React.FC = () => {
                 meets
                 convenience. Explore our vast range of products, savor exclusive discounts, and enjoy seamless browsing.
                 Your satisfaction is our promise!</p>
-            {!isReady ? (
-                <div>Loading your profile...</div>
-            ) : (
-                <>
-                    {!address ? (
-                        <div>Connect your wallet to view your profile</div>
-                    ) : (
-                        <>
-                            <Row gutter={16}>
-                                <Col span={8}>
-                                    <Card title="Profile"
-                                          extra={
-                                              <Tag color={isConnected ? '#004517' : 'red'} style={styles.statusTag}>
-                                                  {isConnected ? 'Connected' : 'Not Connected'}
-                                              </Tag>
-                                          }>
-                                        <p style={{ marginTop: 0}}><strong>Your Address:</strong> {address}</p>
-                                        <p style={{ marginBottom: '30px'}}><strong>Web3Inbox Account ID:</strong> {account}</p>
-                                        <Table
-                                            columns={blockchainColumns}
-                                            dataSource={connector?.chains || []}
-                                            pagination={false}
-                                            rowKey="id"
-                                            rowClassName={getRowClassName}
-                                        />
-                                    </Card>
-                                </Col>
-                                <Col span={16}>
-                                    {!isRegistered ? (
-                                        <div>
-                                            To manage profile, sign and register an identity key:&nbsp;
-                                            <button onClick={performRegistration} disabled={isRegistering}>
-                                                {isRegistering ? 'Signing...' : 'Sign'}
-                                            </button>
+            <>
+                <Row gutter={16}>
+                    <Col span={8}>
+                        <Card title="Profile"
+                              extra={
+                                  <Tag color={isConnected ? '#004517' : 'red'} style={styles.statusTag}>
+                                      {isConnected ? 'Connected' : 'Not Connected'}
+                                  </Tag>
+                              }>
+                            {isConnected && (
+                                <div>
+                                    <p style={{marginTop: 0}}><strong>Your Address:</strong> {address}</p>
+                                    <p style={{marginBottom: '30px'}}><strong>Web3Inbox Account ID:</strong> {account}
+                                    </p>
+                                    <Table
+                                        columns={blockchainColumns}
+                                        dataSource={connector?.chains || []}
+                                        pagination={false}
+                                        rowKey="id"
+                                        rowClassName={getRowClassName}
+                                    />
+                                </div>
+                            )}
+                            {!isConnected && (
+                                <div style={{ textAlign: 'center' }}>
+                                    <Button shape="round" type="primary" style={styles.button} onClick={() => open()}>
+                                        Connect Wallet
+                                    </Button>
+                                </div>
+                            )}
+                        </Card>
+                    </Col>
+                    <Col span={16}>
+                        {!isRegistered ? (
+                            <div>
+                                To manage profile, sign and register an identity key:&nbsp;
+                                <button onClick={performRegistration} disabled={isRegistering}>
+                                    {isRegistering ? 'Signing...' : 'Sign'}
+                                </button>
+                            </div>
+                        ) : (
+                            <>
+                                <h2 style={{marginTop: 0}}>Notifications</h2>
+                                <p>Stay informed with personalized notifications tailored to your
+                                    preferences. Receive timely updates and alerts with our user-friendly
+                                    notification system.</p>
+                                {!isSubscribed ? (
+                                    <>
+                                        <div style={{textAlign: "center", marginTop: '20px'}}>
+                                            <Button shape="round" size="small" type="primary"
+                                                    style={styles.button} onClick={performSubscribe}
+                                                    disabled={isSubscribing}>
+                                                {isSubscribing ? 'Subscribing...' : 'Subscribe to notifications'}
+                                            </Button>
                                         </div>
-                                    ) : (
-                                        <>
-                                            <h2 style={{ marginTop: 0}}>Notifications</h2>
-                                            <p>Stay informed with personalized notifications tailored to your
-                                                preferences. Receive timely updates and alerts with our user-friendly
-                                                notification system.</p>
-                                            {!isSubscribed ? (
-                                                <>
-                                                    <div style={{textAlign: "center", marginTop: '20px'}}>
-                                                        <Button shape="round" size="small" type="primary"
-                                                                style={styles.button} onClick={performSubscribe}
-                                                                disabled={isSubscribing}>
-                                                            {isSubscribing ? 'Subscribing...' : 'Subscribe to notifications'}
-                                                        </Button>
-                                                    </div>
-                                                </>
-                                            ) : (
-                                                <>
-                                                    <Table
-                                                        columns={columns}
-                                                        pagination={false}
-                                                        scroll={{x: true}}
-                                                        size="small"
-                                                        dataSource={messages}
-                                                        style={{marginTop: '10px'}}
-                                                        rowKey="id"/>
-                                                    <div style={{textAlign: "center", marginTop: '20px'}}>
-                                                        <Button shape="round" size="small" type="default"
-                                                                style={styles.button} onClick={performUnsubscribe}
-                                                                disabled={isUnsubscribing}>
-                                                            {isUnsubscribing ? 'Unsubscribing...' : 'Unsubscribe'}
-                                                        </Button>
-                                                    </div>
-                                                </>
-                                            )}
-                                        </>
-                                    )}
-                                </Col>
-                            </Row>
-                        </>
-                    )}
-                </>
-            )}
+                                    </>
+                                ) : (
+                                    <>
+                                        <Table
+                                            columns={columns}
+                                            pagination={false}
+                                            scroll={{x: true}}
+                                            size="small"
+                                            dataSource={messages}
+                                            style={{marginTop: '10px'}}
+                                            rowKey="id"/>
+                                        <div style={{textAlign: "center", marginTop: '20px'}}>
+                                            <Button shape="round" size="small" type="default"
+                                                    style={styles.button} onClick={performUnsubscribe}
+                                                    disabled={isUnsubscribing}>
+                                                {isUnsubscribing ? 'Unsubscribing...' : 'Unsubscribe'}
+                                            </Button>
+                                        </div>
+                                    </>
+                                )}
+                            </>
+                        )}
+                    </Col>
+                </Row>
+            </>
         </>
     )
 };
