@@ -113,6 +113,7 @@ const Notifications: React.FC = () => {
                         <>
                             <div>Address: {address}</div>
                             <div>Account ID: {account}</div>
+                            <br />
                             {!isRegistered ? (
                                 <div>
                                     To manage notifications, sign and register an identity key:&nbsp;
@@ -124,15 +125,15 @@ const Notifications: React.FC = () => {
                                 <>
                                     {!isSubscribed ? (
                                         <>
-                                            <button onClick={performSubscribe} disabled={isSubscribing}>
+                                            <Button shape="round" size="small" type="primary" style={styles.button} onClick={performSubscribe} disabled={isSubscribing}>
                                                 {isSubscribing ? 'Subscribing...' : 'Subscribe to notifications'}
-                                            </button>
+                                            </Button>
                                         </>
                                     ) : (
                                         <>
-                                            <button onClick={performUnsubscribe} disabled={isUnsubscribing}>
+                                            <Button shape="round" size="small" type="default" style={styles.button} onClick={performUnsubscribe} disabled={isUnsubscribing}>
                                                 {isUnsubscribing ? 'Unsubscribing...' : 'Unsubscribe'}
-                                            </button>
+                                            </Button>
                                             {
                                                 <Table
                                                     columns={columns}
@@ -140,6 +141,7 @@ const Notifications: React.FC = () => {
                                                     scroll={{ x: true }}
                                                     size="small"
                                                     dataSource={messages}
+                                                    style={{ marginTop: '10px' }}
                                                     rowKey="id" />
                                             }
                                         </>
