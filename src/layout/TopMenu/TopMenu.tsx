@@ -46,7 +46,7 @@ const TopMenu: FC = () => {
 
     return (
         <Header style={{ ...styles.header, padding: isMobile ? "0 5px 0 5px" : "0 20px" }}>
-            <h2><Link to="/">ETHGlobal Hackathon </Link></h2>
+            <h2><Link to="/" style={{ color: '#004517'}}>ETHGlobal Hackathon </Link></h2>
             <div style={styles.headerRight}>
                 <Menu style={styles.headerRight}>
                     <Menu.Item key="1" style={{ minWidth: '150px', textAlign: 'center' }}>

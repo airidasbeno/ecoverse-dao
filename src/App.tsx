@@ -15,7 +15,7 @@ import {TopMenu, MainContent} from "layout";
 
 import CreateCampaign from "./components/campaigns/CreateCampaign";
 import Marketplace from "./components/marketplace/Marketplace";
-import Notifications from "./components/profile/Notifications";
+import Profile from "./components/profile/Profile";
 import AddToMarketplace from "./components/campaigns/AddToMarketplace";
 
 import "styles/App.css";
@@ -78,7 +78,7 @@ function App() {
                                 <Route path="/campaigns" element={<Campaigns />} />
                                 <Route path="/campaigns/create" element={<CreateCampaign />} />
                                 <Route path="/campaigns/add-to-marketplace" element={<AddToMarketplace />} />
-                                <Route path="/profile" element={<Notifications />} />
+                                <Route path="/profile" element={<Profile />} />
                             </Routes>
                         </MainContent>
                     </Layout>
