@@ -5,6 +5,7 @@ import contractAbi from '../assets/abis/mint.json';
 export const contractAddreses: { [key: number]: string } = {
     5: "0xd9145CCE52D386f254917e481eB44e9943F39138",
     534351: "0x61BEcD8eBD72fE73De9B8Be4368EeF7f78c77053",
+    59140: "0x61BEcD8eBD72fE73De9B8Be4368EeF7f78c77053"
 };
 
 const useMintNFT = async () => {

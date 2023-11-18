@@ -14,6 +14,7 @@ export interface Listing {
 const contractAddreses:  { [key: number]: string }= {
     5: "0xF6466904489b4b2cf375FE26d8Ac297Cfc6f49dF",
     534351: "0xB16d8FBFaB7439C562A37378fbF276183D304B28",
+    59140: "0xbA972364da5beB6A58d6144258dBB30F823d4eE6"
 }
 
 export const useNFTMarketplace = async () => {

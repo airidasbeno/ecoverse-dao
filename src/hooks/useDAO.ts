@@ -5,6 +5,7 @@ import contractAbi from '../assets/abis/dao.json';
 export const contractAddreses: { [key: number]: string } = {
     5: "0x378545248b063e592383e83426B1e4860DFad152",
     534351: "0xFEB5B03A501f808b6E2ed717421012A7549098f5",
+    59140: "0xd979b5BC810e17705706FE66401A9f5759092148"
 };
 
 
