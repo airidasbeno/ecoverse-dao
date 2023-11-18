@@ -1,6 +1,5 @@
 import {
     useManageSubscription,
-    useSubscription,
     useW3iAccount,
     useInitWeb3InboxClient,
     useMessages
@@ -22,33 +21,23 @@ const styles = {
     },
 } as const;
 
-
 const Notifications: React.FC = () => {
-    // const [messagesState, setMessagesState] = useState([])
     const { address } = useAccount();
     const { signMessageAsync } = useSignMessage();
 
     const projectId = process.env.REACT_APP_WALLETCONNECT_PROJECT_ID ?? '';
-    // Initialize the Web3Inbox SDK
     const isReady = useInitWeb3InboxClient({
-        // The project ID and domain you setup in the Domain Setup section
         projectId,
         domain: process.env.REACT_APP_WALLETCONNECT_DOMAIN ?? '',
-
-        // Allow localhost development with "unlimited" mode.
-        // This authorizes this dapp to control notification subscriptions for all domains (including `app.example.com`), not just `window.location.host`
         isLimited: false
     })
 
     const { account, setAccount, isRegistered, isRegistering, register } = useW3iAccount()
     useEffect(() => {
         if (!address) return
-        // Convert the address into a CAIP-10 blockchain-agnostic account ID and update the Web3Inbox SDK with it
         setAccount(`eip155:1:${address}`)
     }, [address, setAccount])
 
-    // In order to authorize the dapp to control subscriptions, the user needs to sign a SIWE message which happens automatically when `register()` is called.
-    // Depending on the configuration of `domain` and `isLimited`, a different message is generated.
     const performRegistration = useCallback(async () => {
         if (!address) return
         try {
@@ -59,14 +48,12 @@ const Notifications: React.FC = () => {
     }, [signMessageAsync, register, address])
 
     useEffect(() => {
-        // Register even if an identity key exists, to account for stale keys
         performRegistration()
     }, [performRegistration])
 
     const { isSubscribed, isSubscribing, subscribe, isUnsubscribing, unsubscribe } = useManageSubscription()
 
     const performSubscribe = useCallback(async () => {
-        // Register again just in case
         await performRegistration()
         await subscribe()
     }, [subscribe, isRegistered])
@@ -75,33 +62,9 @@ const Notifications: React.FC = () => {
         await unsubscribe()
     }, [unsubscribe, isRegistered])
 
-    const { subscription } = useSubscription()
     const { messages } = useMessages()
-    console.log("messages", messages)
-
-    // const messages = [{ "id": 1700292763470, "topic": "0d9d529b5895dba78955a39d4317d518661db72f74332b348b3e840636947051", "message": { "id": "10fe466f-c2c8-4e50-9a17-ad4df8779a11", "type": "7c18bf6a-62f2-4443-b911-4647f6966b8a", "title": "2123", "body": "123123", "icon": "https://imagedelivery.net/_aTEfDRm7z3tKgu9JhfeKA/null/md", "url": "https://cloud.walletconnect.com/app/notify" }, "publishedAt": 1700292763000 }]
 
     const columns = [
-        {
-            title: 'ID',
-            dataIndex: 'id',
-            key: 'id'
-        },
-        {
-            title: 'Topic',
-            dataIndex: 'topic',
-            key: 'topic'
-        },
-        {
-            title: 'Message ID',
-            dataIndex: ['message', 'id'],
-            key: 'messageId'
-        },
-        {
-            title: 'Type',
-            dataIndex: ['message', 'type'],
-            key: 'type'
-        },
         {
             title: 'Title',
             dataIndex: ['message', 'title'],
@@ -113,13 +76,13 @@ const Notifications: React.FC = () => {
             key: 'body'
         },
         {
-            title: 'Icon',
-            dataIndex: ['message', 'icon'],
-            key: 'icon',
-            render: (text: string) => <img src={text} alt="Icon" style={{ width: '24px', height: '24px' }} />
+            title: 'Date',
+            dataIndex: 'publishedAt',
+            key: 'publishedAt',
+            render: (text: number) => new Date(text).toLocaleString()
         },
         {
-            title: 'URL',
+            title: 'Actions',
             dataIndex: ['message', 'url'],
             key: 'url',
             render: (text: string) => {
@@ -136,22 +99,16 @@ const Notifications: React.FC = () => {
                 }
             }
         },
-        {
-            title: 'Published At',
-            dataIndex: 'publishedAt',
-            key: 'publishedAt',
-            render: (text: number) => new Date(text).toLocaleString()
-        }
     ];
 
     return (
         <>
             {!isReady ? (
-                <div>Loading client...</div>
+                <div>Loading your notifications...</div>
             ) : (
                 <>
                     {!address ? (
-                        <div>Connect your wallet</div>
+                        <div>Connect your wallet to view your notifications</div>
                     ) : (
                         <>
                             <div>Address: {address}</div>
@@ -176,16 +133,13 @@ const Notifications: React.FC = () => {
                                             <button onClick={performUnsubscribe} disabled={isUnsubscribing}>
                                                 {isUnsubscribing ? 'Unsubscribing...' : 'Unsubscribe'}
                                             </button>
-                                            <div>Subscription: {JSON.stringify(subscription)}</div>
-                                            {messages.length === 0 ? <div>No messages</div> :
-                                                <Table
-                                                    columns={columns}
-                                                    pagination={false}
-                                                    scroll={{ x: true }}
-                                                    size="small"
-                                                    dataSource={messages}
-                                                    rowKey="id" />
-                                            }
+                                            <Table
+                                                columns={columns}
+                                                pagination={false}
+                                                scroll={{ x: true }}
+                                                size="small"
+                                                dataSource={messages}
+                                                rowKey="id" />
                                         </>
                                     )}
                                 </>
