@@ -159,7 +159,9 @@ const Notifications: React.FC = () => {
                                         <>
                                             <div>You are subscribed</div>
                                             <div>Subscription: {JSON.stringify(subscription)}</div>
-                                            <Table columns={columns} dataSource={messages} rowKey="id" />
+                                            {messages.length === 0 ? <div>No messages</div> :
+                                                <Table columns={columns} dataSource={messages} rowKey="id" />
+                                            }
                                         </>
                                     )}
                                 </>
