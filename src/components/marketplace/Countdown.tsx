@@ -18,7 +18,7 @@ const Countdown: React.FC = () => {
 
     return (
         <>
-            <h3 style={{marginTop: '5px', marginBottom: '10px'}}>Time Left to Vote:</h3>
+            <h3 style={{marginTop: '5px', marginBottom: '10px', textAlign: 'center' }}>Time Left to Vote:</h3>
             <div className={'countdown-container'}>
                 <div className={'countdown-item'}>
                     {days}

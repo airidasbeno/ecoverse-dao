@@ -29,17 +29,14 @@ const Campaigns: React.FC = () => {
                 meets convenience. Explore our vast range of products, savor exclusive discounts, and enjoy seamless
                 browsing. Your satisfaction is our promise!</p>
             {isConnected ? (
-                <Row>
-                    <Col span={6}>
+                <Row gutter={16}>
+                    <Col span={8}>
                         <CampaignCard/>
                     </Col>
-                    <Col span={6}>
+                    <Col span={8}>
                         <CampaignCard/>
                     </Col>
-                    <Col span={6}>
-                        <CampaignCard/>
-                    </Col>
-                    <Col span={6}>
+                    <Col span={8}>
                         <CampaignCard/>
                     </Col>
                 </Row>

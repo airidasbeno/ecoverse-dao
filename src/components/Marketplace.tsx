@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row } from 'antd';
+import {Col, Row} from 'antd';
 import MarketplaceCard from "./marketplace/MarketplaceCard";
 // import useNFTMarketplace, { Listing } from "../../hooks/useMarketplace";
 
@@ -23,17 +23,14 @@ const Marketplace: React.FC = () => {
                 meets convenience. Explore our vast range of products, savor exclusive discounts, and enjoy seamless
                 browsing. Your satisfaction is our promise!
             </p>
-            <Row>
-                <Col span={6}>
+            <Row gutter={16}>
+                <Col span={8}>
                     <MarketplaceCard/>
                 </Col>
-                <Col span={6}>
+                <Col span={8}>
                     <MarketplaceCard/>
                 </Col>
-                <Col span={6}>
-                    <MarketplaceCard/>
-                </Col>
-                <Col span={6}>
+                <Col span={8}>
                     <MarketplaceCard/>
                 </Col>
             </Row>

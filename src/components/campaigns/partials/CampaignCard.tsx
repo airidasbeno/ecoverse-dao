@@ -1,25 +1,21 @@
 import React, { useState } from 'react';
-import { Button } from 'antd';
+import {Button, Card} from 'antd';
+import {Link} from "react-router-dom";
 import ViewCampaign from "./ViewCampaign";
-import { Link } from "react-router-dom";
 
 const styles = {
     card: {
-        padding: '5px 15px',
         margin: '10px',
-        textAlign: 'center',
-        borderRadius: '10px',
-        backgroundColor: 'white',
     },
     image: {
         width: '100%',
         borderRadius: '8px',
         padding: '3px',
-        border: '1px solid #d3d3d3'
+        border: '1px solid #c3c3c3'
     },
     button: {
         height: "40px",
-        padding: "0 15px",
+        padding: "0 20px",
         textAlign: "center",
         fontWeight: "600",
         letterSpacing: "0.2px",
@@ -43,22 +39,24 @@ const CampaignCard: React.FC = () => {
 
     return (
         <>
-            <div style={styles.card}>
-                <h2>Campaign Title</h2>
-                <p>Campaign short description, Campaign short description...</p>
+            <Card title="Campaign Title" bordered={true} style={styles.card}>
+                <p style={{marginTop: 0, textAlign: 'center'}}>Campaign short description, Campaign short
+                    description...</p>
                 <img src={'https://random.imagecdn.app/200/150'}
                      alt={'Campaign Title'}
                      title={"Campaign Title"}
                      style={styles.image}/>
-                <Button shape="round" type="default" onClick={handleViewCampaignClick} style={styles.button}>
-                    More Details
-                </Button>
-                <Button shape="round" type="primary" style={styles.button}>
-                    <Link to="/campaigns/submit">Submit</Link>
-                </Button>
+                <div style={{textAlign: 'center', marginTop: '15px'}}>
+                    <Button shape="round" type="default" onClick={handleViewCampaignClick} style={styles.button}>
+                        More Details
+                    </Button>
+                    <Button shape="round" type="primary" style={styles.button}>
+                        <Link to="/campaigns/submit">Submit</Link>
+                    </Button>
+                </div>
                 <ViewCampaign isVisible={isModalVisible} onClose={handleModalClose}/>
-            </div>
+            </Card>
         </>
-    );
+);
 }
 export default CampaignCard;

@@ -41,7 +41,7 @@ const { chains, publicClient } = configureChains(
 
 const metadata = {
     name: 'EcoVerse DAO',
-    description: 'EcoVerse DAO - Empowering earth, enabling change',
+    description: 'EcoVerse DAO - Empowering Earth, Enabling Change',
     url: 'https://hackathon-front-end-eta.vercel.app',
     icons: ['https://avatars.githubusercontent.com/u/37784886']
 };
