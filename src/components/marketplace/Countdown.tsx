@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
 
 const Countdown: React.FC = () => {
-    const [countdown, setCountdown] = useState(4 * 24 * 60 * 60 * 1000); // 4 days in milliseconds
+    const [countdown, setCountdown] = useState(4 * 24 * 60 * 60 * 1000);
 
     useEffect(() => {
         const intervalId = setInterval(() => {
-            setCountdown((prevCountdown) => Math.max(0, prevCountdown - 1000)); // Update countdown every second
+            setCountdown((prevCountdown) => Math.max(0, prevCountdown - 1000));
         }, 1000);
 
         return () => clearInterval(intervalId); // Cleanup the interval on component unmount
@@ -18,7 +18,7 @@ const Countdown: React.FC = () => {
 
     return (
         <>
-            <h3 style={{ marginTop: '5px', marginBottom: '10px' }}>Time Left to Vote:</h3>
+            <h3 style={{marginTop: '5px', marginBottom: '10px'}}>Time Left to Vote:</h3>
             <div className={'countdown-container'}>
                 <div className={'countdown-item'}>
                     {days}

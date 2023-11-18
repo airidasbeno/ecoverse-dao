@@ -59,7 +59,7 @@ const SubmitCampaign: React.FC = () => {
                             name="budget"
                             rules={[{required: true, message: 'Input project budget'}]}
                         >
-                            <InputNumber prefix="$" style={{ width: '100%' }} />
+                            <InputNumber prefix="$" style={{width: '100%'}}/>
                         </Form.Item>
 
                         <Form.Item wrapperCol={{offset: 12, span: 12}}>
