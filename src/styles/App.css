@@ -44,7 +44,15 @@ body {
 }
 
 .selected-row {
-    background-color: #b7eb8f;
+    background-color: #d6edde;
+}
+
+.selected-row:hover {
+    .ant-table-cell {
+        background-color: #d6edde !important;
+    }
+
+    opacity: 0.9;
 }
 
 .ant-btn-default:not(:disabled):not(.ant-btn-disabled):hover {

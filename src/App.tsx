@@ -18,10 +18,8 @@ import Marketplace from "./components/marketplace/Marketplace";
 import Notifications from "./components/profile/Notifications";
 import AddToMarketplace from "./components/campaigns/AddToMarketplace";
 
-
 import "styles/App.css";
 import Campaigns from "components/campaigns/Campaigns";
-
 
 const styles = {
     layout: {

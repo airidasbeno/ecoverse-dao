@@ -16,7 +16,6 @@ const styles = {
         fontWeight: "600",
         letterSpacing: "0.2px",
         fontSize: "15px",
-        marginLeft: "10px",
         border: "none",
     },
     statusTag: {
@@ -125,9 +124,7 @@ const Notifications: React.FC = () => {
     const getRowClassName = (record: { id: number }) => {
         return connectedChainId === record.id ? 'selected-row' : '';
     };
-    const tableTitle = () => (
-        <h2 style={{ textAlign: 'center', margin: '10px 0' }}>Notifications</h2>
-    );
+
     return (
         <>
             <h1>My Profile</h1>
@@ -146,13 +143,13 @@ const Notifications: React.FC = () => {
                             <Row gutter={16}>
                                 <Col span={8}>
                                     <Card title="Profile"
-                                        extra={
-                                            <Tag color={isConnected ? 'green' : 'red'} style={styles.statusTag}>
-                                                {isConnected ? 'Connected' : 'Not Connected'}
-                                            </Tag>
-                                        }>
-                                        <p>Address: {address}</p>
-
+                                          extra={
+                                              <Tag color={isConnected ? '#004517' : 'red'} style={styles.statusTag}>
+                                                  {isConnected ? 'Connected' : 'Not Connected'}
+                                              </Tag>
+                                          }>
+                                        <p style={{ marginTop: 0}}><strong>Your Address:</strong> {address}</p>
+                                        <p style={{ marginBottom: '30px'}}><strong>Web3Inbox Account ID:</strong> {account}</p>
                                         <Table
                                             columns={blockchainColumns}
                                             dataSource={connector?.chains || []}
@@ -160,8 +157,6 @@ const Notifications: React.FC = () => {
                                             rowKey="id"
                                             rowClassName={getRowClassName}
                                         />
-                                        <div>Account ID: {account}</div>
-                                        <br />
                                     </Card>
                                 </Col>
                                 <Col span={16}>
@@ -174,28 +169,37 @@ const Notifications: React.FC = () => {
                                         </div>
                                     ) : (
                                         <>
+                                            <h2 style={{ marginTop: 0}}>Notifications</h2>
+                                            <p>Stay informed with personalized notifications tailored to your
+                                                preferences. Receive timely updates and alerts with our user-friendly
+                                                notification system.</p>
                                             {!isSubscribed ? (
                                                 <>
-                                                    <Button shape="round" size="small" type="primary" style={styles.button} onClick={performSubscribe} disabled={isSubscribing}>
-                                                        {isSubscribing ? 'Subscribing...' : 'Subscribe to notifications'}
-                                                    </Button>
+                                                    <div style={{textAlign: "center", marginTop: '20px'}}>
+                                                        <Button shape="round" size="small" type="primary"
+                                                                style={styles.button} onClick={performSubscribe}
+                                                                disabled={isSubscribing}>
+                                                            {isSubscribing ? 'Subscribing...' : 'Subscribe to notifications'}
+                                                        </Button>
+                                                    </div>
                                                 </>
                                             ) : (
                                                 <>
-                                                    <Button shape="round" size="small" type="default" style={styles.button} onClick={performUnsubscribe} disabled={isUnsubscribing}>
-                                                        {isUnsubscribing ? 'Unsubscribing...' : 'Unsubscribe'}
-                                                    </Button>
-                                                    {
-                                                        <Table
-                                                            columns={columns}
-                                                            pagination={false}
-                                                            scroll={{ x: true }}
-                                                            title={tableTitle}
-                                                            size="small"
-                                                            dataSource={messages}
-                                                            style={{ marginTop: '10px' }}
-                                                            rowKey="id" />
-                                                    }
+                                                    <Table
+                                                        columns={columns}
+                                                        pagination={false}
+                                                        scroll={{x: true}}
+                                                        size="small"
+                                                        dataSource={messages}
+                                                        style={{marginTop: '10px'}}
+                                                        rowKey="id"/>
+                                                    <div style={{textAlign: "center", marginTop: '20px'}}>
+                                                        <Button shape="round" size="small" type="default"
+                                                                style={styles.button} onClick={performUnsubscribe}
+                                                                disabled={isUnsubscribing}>
+                                                            {isUnsubscribing ? 'Unsubscribing...' : 'Unsubscribe'}
+                                                        </Button>
+                                                    </div>
                                                 </>
                                             )}
                                         </>
