@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button, Col, Form, InputNumber, message, Row} from 'antd';
-import ProgressSteps from "./partials/ProgressSteps";
+import ProgressSteps from "./ProgressSteps";
 
 const styles = {
     button: {

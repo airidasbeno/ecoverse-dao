@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button, Col, Row} from 'antd';
-import CampaignCard from "./partials/CampaignCard";
+import CampaignCard from "./campaigns/partials/CampaignCard";
 import {useAccount} from "wagmi";
 import {useWeb3Modal} from '@web3modal/wagmi/react';
 

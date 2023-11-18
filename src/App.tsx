@@ -13,13 +13,13 @@ import {publicProvider} from 'wagmi/providers/public';
 
 import {TopMenu, MainContent} from "layout";
 
-import CreateCampaign from "./components/campaigns/CreateCampaign";
-import Marketplace from "./components/marketplace/Marketplace";
-import Profile from "./components/profile/Profile";
-import SubmitCampaign from "./components/campaigns/SubmitCampaign";
+import CreateCampaign from "./components/campaigns/partials/CreateCampaign";
+import Marketplace from "./components/Marketplace";
+import Profile from "./components/Profile";
+import SubmitCampaign from "./components/campaigns/partials/SubmitCampaign";
 
 import "styles/App.css";
-import Campaigns from "components/campaigns/Campaigns";
+import Campaigns from "components/Campaigns";
 import Homepage from "./components/Homepage";
 
 const styles = {

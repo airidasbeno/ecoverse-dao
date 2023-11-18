@@ -4,7 +4,7 @@ import customParseFormat from 'dayjs/plugin/customParseFormat';
 import {Button, Col, DatePicker, Form, Input, InputNumber, message, Row} from 'antd';
 import TextArea from "antd/es/input/TextArea";
 import {RangePickerProps} from "antd/es/date-picker";
-import ProgressSteps from "./partials/ProgressSteps";
+import ProgressSteps from "./ProgressSteps";
 
 const styles = {
     button: {

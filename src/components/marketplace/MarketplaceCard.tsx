@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {Button} from 'antd';
-import ViewCampaign from "../../campaigns/partials/ViewCampaign";
+import ViewCampaign from "../campaigns/partials/ViewCampaign";
 import Countdown from "./Countdown";
 import {useAccount} from "wagmi";
 import {useWeb3Modal} from '@web3modal/wagmi/react';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col, Row } from 'antd';
-import MarketplaceCard from "./partials/MarketplaceCard";
+import MarketplaceCard from "./marketplace/MarketplaceCard";
 // import useNFTMarketplace, { Listing } from "../../hooks/useMarketplace";
 
 const Marketplace: React.FC = () => {
