@@ -49,14 +49,14 @@ const CreateCampaign: React.FC = () => {
     const onFinishFailed = () => {
         messageApi.open({
             type: 'error',
-            content: 'Error occurred, check all inputs.',
+            content: 'Error occurred, check inputs.',
         });
     };
 
     return (
         <>
             {contextHolder}
-            <ProgressSteps/>
+            <ProgressSteps step={1}/>
             <Row>
                 <Col span={12} offset={6}>
                     <h1>Create a Campaign</h1>

@@ -15,6 +15,7 @@ import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { createWeb3Modal } from '@web3modal/wagmi/react';
 import Notifications from "./components/profile/Notifications";
+import AddToMarketplace from "./components/campaigns/AddToMarketplace";
 
 const styles = {
     layout: {
@@ -69,8 +70,9 @@ function App() {
                             <Routes>
                                 <Route path="/" element={<Marketplace />} />
                                 <Route path="/campaigns" element={<Campaigns />} />
+                                <Route path="/campaigns/create" element={<CreateCampaign />} />
+                                <Route path="/campaigns/add-to-marketplace" element={<AddToMarketplace />} />
                                 <Route path="/profile" element={<Notifications />} />
-                                <Route path="/create" element={<CreateCampaign />} />
                             </Routes>
                         </MainContent>
                     </Layout>

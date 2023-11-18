@@ -75,7 +75,7 @@ const TopMenu: FC = () => {
                 )}
                 {isConnected && (
                     <Button shape="round" type="primary" style={styles.button}>
-                        <Link to="/create">Create Campaign</Link>
+                        <Link to="/campaigns/create">Create Campaign</Link>
                     </Button>
                 )}
             </div>

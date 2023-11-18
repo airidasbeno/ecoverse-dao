@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Button } from 'antd';
 import ViewCampaign from "../../campaigns/ViewCampaign";
 
-
 const styles = {
     card: {
         border: '1px solid #d3d3d3',
