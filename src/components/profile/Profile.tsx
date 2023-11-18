@@ -1,4 +1,5 @@
 import React from 'react';
+import { useAccount, useChainId } from "wagmi";
 
 const Profile: React.FC = () => {
     const { address, isConnected, connector } = useAccount();
