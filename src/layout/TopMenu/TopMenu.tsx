@@ -54,7 +54,7 @@ const TopMenu: FC = () => {
                     </Menu.Item>
                     {isConnected && (
                         <Menu.Item key="2" style={{ minWidth: '150px', textAlign: 'center' }}>
-                            <Link to="/campaigns">My Campaings</Link>
+                            <Link to="/campaigns">My Campaigns</Link>
                         </Menu.Item>
                     )}
                     {isConnected && (

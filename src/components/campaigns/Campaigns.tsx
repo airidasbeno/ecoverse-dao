@@ -15,6 +15,12 @@ const Campaigns: React.FC = () => {
                 <Col span={6}>
                     <MarketplaceCard />
                 </Col>
+                <Col span={6}>
+                    <MarketplaceCard />
+                </Col>
+                <Col span={6}>
+                    <MarketplaceCard />
+                </Col>
             </Row>
         </>
     );

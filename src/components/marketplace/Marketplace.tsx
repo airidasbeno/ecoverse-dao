@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Col, Row } from 'antd';
-import useNFTMarketplace, { Listing } from "../../hooks/useMarketplace";
+import MarketplaceCard from "./partials/MarketplaceCard";
+// import useNFTMarketplace, { Listing } from "../../hooks/useMarketplace";
 
 const Marketplace: React.FC = () => {
-    const [listings, setListings] = useState<Listing[]>([]);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const { listings } = await useNFTMarketplace();
-            setListings(listings);
-        };
-
-        fetchData();
-    }, []);
+    // const [listings, setListings] = useState<Listing[]>([]);
+    //
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const { listings } = await useNFTMarketplace();
+    //         setListings(listings);
+    //     };
+    //
+    //     fetchData();
+    // }, []);
 
     return (
         <>
@@ -23,12 +24,18 @@ const Marketplace: React.FC = () => {
                 browsing. Your satisfaction is our promise!
             </p>
             <Row>
-                {listings.map((listing: Listing, index: number) => (
-                    <Col span={6} key={index}>
-                        {/* Render the properties of the listing object */}
-                        {listing.seller}, {listing.tokenAddress}, {listing.tokenId}, {listing.price}
-                    </Col>
-                ))}
+                <Col span={6}>
+                    <MarketplaceCard />
+                </Col>
+                <Col span={6}>
+                    <MarketplaceCard />
+                </Col>
+                <Col span={6}>
+                    <MarketplaceCard />
+                </Col>
+                <Col span={6}>
+                    <MarketplaceCard />
+                </Col>
             </Row>
         </>
     );
