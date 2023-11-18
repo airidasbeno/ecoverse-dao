@@ -1,9 +1,13 @@
 import React from 'react';
+
+import {Button, Card, Col, DatePicker, Form, Input, InputNumber, message, Row} from 'antd';
+import { RangePickerProps } from "antd/es/date-picker";
+import TextArea from "antd/es/input/TextArea";
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
-import {Button, Card, Col, DatePicker, Form, Input, InputNumber, message, Row} from 'antd';
-import TextArea from "antd/es/input/TextArea";
-import { RangePickerProps } from "antd/es/date-picker";
+
+import mintUniqueToken from 'hooks/useMint';
+
 import ProgressSteps from "./ProgressSteps";
 
 const styles = {
@@ -52,12 +56,32 @@ type FieldType = {
 const CreateCampaign: React.FC = () => {
     const [messageApi, contextHolder] = message.useMessage();
 
-    const onFinish = () => {
-        messageApi.open({
-            type: 'success',
-            content: 'Campaign was created successfully.',
-        });
+
+    const onFinish = async (values: FieldType) => {
+        try {
+
+            const result = await mintUniqueToken(values.nft_count, values.ipfs_metadata, values.description);
+    
+            if(!result) {
+                messageApi.open({
+                    type: 'error',
+                    content: 'Error occurred during minting.',
+                });
+                return;
+            } else {
+            messageApi.open({
+                type: 'success',
+                content: 'Campaign was created successfully.',
+            });
+        }
+        } catch (error: any) {
+            messageApi.open({
+                type: 'error',
+                content: `Error occurred during minting: ${error.message}`,
+            });
+        }
     };
+    
 
     const onFinishFailed = () => {
         messageApi.open({
