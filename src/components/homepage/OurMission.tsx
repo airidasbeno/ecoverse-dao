@@ -18,10 +18,10 @@ const OurMission: React.FC = () => {
                         <div className={`${styles["col-text"]}`}>
                             <div className={`${styles.content}`}>
                                 <h3>EcoVerse DAO Mission</h3>
-                                <>Our decentralized autonomous organization (DAO) thrives on active participation, and
+                                <p>Our decentralized autonomous organization (DAO) thrives on active participation, and
                                     your voice matters. Be a part of nature conservation campaigns! By leveraging WalletConnect, a secure bridge between your wallet
                                     and decentralized applications, you can seamlessly engage with the DAO's voting
-                                    mechanisms and influence the direction of conservation projects.</>
+                                    mechanisms and influence the direction of conservation projects.</p>
                                 <p>Elevate your involvement in our community-driven conservation initiatives by embracing this
                                     cutting-edge technology. No longer will you need to worry about missing out on key
                                     voting opportunities; instead, focus on actively shaping the future of our EcoVerse
