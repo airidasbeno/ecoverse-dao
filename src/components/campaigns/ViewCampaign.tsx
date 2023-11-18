@@ -14,7 +14,8 @@ const ViewCampaign: React.FC<ViewCampaignProps> = ({isVisible, onClose}) => {
                 visible={isVisible}
                 onOk={onClose}
                 onCancel={onClose}
-                width={600} // Set the width as needed
+                okText={'VOTE'}
+                width={600}
             >
                 <Card>
                     <p>
