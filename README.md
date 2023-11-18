@@ -1,3 +1,9 @@
+# Project Idea
+
+Any user can create a unique NFT collection and list it on our marketplace, complete with detailed descriptions of how the proceeds from each sold NFT will be utilized. For instance, an individual crafting nesting boxes could launch a collection where each NFT represents a separate nesting box. These NFTs would be sold with a 25% platform fee, which will then be channeled into a second-stage, DAO-based investment round. In this stage, investors can propose and vote on new smart contracts through an initial voting period, determining the use of the collected funds.
+
+Project DEMO: https://ecoverse-dao.vercel.app/
+
 # LINEA
 
 ### Smart contracts
