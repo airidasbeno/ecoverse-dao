@@ -9,12 +9,12 @@
 }
 
 .our-mission .content {
-    padding: 2rem;
+    padding: 2rem 0;
 }
 
-.our-mission .content h2 {
-    font-size: 3.2rem;
-    line-height: 3.5rem;
+.our-mission .content h3 {
+    font-size: 2.3rem;
+    line-height: 2.7rem;
 }
 
 .our-mission .content p {
@@ -32,7 +32,9 @@
 }
 
 .our-mission .rounded-circle {
-    border-radius: 50%;
+    border-radius: 5%;
+    padding: 5px;
+    border: 1px solid #c3c3c3;
 }
 
 .align-items-center {

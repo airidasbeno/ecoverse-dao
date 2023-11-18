@@ -4,7 +4,7 @@ import { useWindowWidthAndHeight } from "hooks";
 import { Link } from "react-router-dom";
 import { useWeb3Modal } from '@web3modal/wagmi/react';
 import { useAccount } from "wagmi";
-import logo from "assets/logos/ecoversedoa_logo.png";
+import logo from "assets/images/ecoversedoa-logo.png";
 
 const { Header } = Layout;
 
