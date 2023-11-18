@@ -133,13 +133,15 @@ const Notifications: React.FC = () => {
                                             <button onClick={performUnsubscribe} disabled={isUnsubscribing}>
                                                 {isUnsubscribing ? 'Unsubscribing...' : 'Unsubscribe'}
                                             </button>
-                                            <Table
-                                                columns={columns}
-                                                pagination={false}
-                                                scroll={{ x: true }}
-                                                size="small"
-                                                dataSource={messages}
-                                                rowKey="id" />
+                                            {
+                                                <Table
+                                                    columns={columns}
+                                                    pagination={false}
+                                                    scroll={{ x: true }}
+                                                    size="small"
+                                                    dataSource={messages}
+                                                    rowKey="id" />
+                                            }
                                         </>
                                     )}
                                 </>
