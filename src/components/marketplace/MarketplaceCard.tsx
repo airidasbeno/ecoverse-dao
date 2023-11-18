@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import {Button} from 'antd';
 import ViewCampaign from "../campaigns/partials/ViewCampaign";
 import Countdown from "./Countdown";
-import {useAccount} from "wagmi";
-import {useWeb3Modal} from '@web3modal/wagmi/react';
+import { useAccount } from "wagmi";
+import { useWeb3Modal } from '@web3modal/wagmi/react';
 
 const styles = {
     card: {
@@ -34,7 +34,7 @@ const styles = {
 const MarketplaceCard: React.FC = () => {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const {isConnected} = useAccount();
-    const {open} = useWeb3Modal();
+    const { open } = useWeb3Modal();
 
     const handleViewCampaignClick = () => {
         setIsModalVisible(true);
@@ -44,17 +44,16 @@ const MarketplaceCard: React.FC = () => {
         setIsModalVisible(false);
     };
 
-
     return (
         <>
             <div style={styles.card}>
                 <h2>Campaign Title</h2>
                 <p>Campaign short description, Campaign short description...</p>
                 <img src={'https://random.imagecdn.app/200/150'}
-                    alt={'Campaign Title'}
-                    title={"Campaign Title"}
-                    style={styles.image} />
-                <Countdown />
+                     alt={'Campaign Title'}
+                     title={"Campaign Title"}
+                     style={styles.image}/>
+                <Countdown/>
                 {isConnected ? (
                     <div>
                         <Button shape="round" type="default" onClick={handleViewCampaignClick} style={styles.button}>
@@ -69,7 +68,7 @@ const MarketplaceCard: React.FC = () => {
                         Connect to Vote
                     </Button>
                 )}
-                <ViewCampaign isVisible={isModalVisible} onClose={handleModalClose} />
+                <ViewCampaign isVisible={isModalVisible} onClose={handleModalClose}/>
             </div>
         </>
     );

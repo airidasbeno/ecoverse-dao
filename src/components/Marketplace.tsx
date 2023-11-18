@@ -25,16 +25,16 @@ const Marketplace: React.FC = () => {
             </p>
             <Row>
                 <Col span={6}>
-                    <MarketplaceCard />
+                    <MarketplaceCard/>
                 </Col>
                 <Col span={6}>
-                    <MarketplaceCard />
+                    <MarketplaceCard/>
                 </Col>
                 <Col span={6}>
-                    <MarketplaceCard />
+                    <MarketplaceCard/>
                 </Col>
                 <Col span={6}>
-                    <MarketplaceCard />
+                    <MarketplaceCard/>
                 </Col>
             </Row>
         </>

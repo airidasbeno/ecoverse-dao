@@ -156,7 +156,9 @@ const Profile: React.FC = () => {
                             <>
                                 <p style={{marginTop: 0}}><strong>Your Address:</strong> {address}</p>
                                 {isRegistered && (
-                                    <p style={{marginBottom: '30px'}}><strong>Web3Inbox Account ID:</strong> {account}</p>
+                                    <p style={{marginBottom: '30px'}}>
+                                        <strong>Web3Inbox Account ID:</strong> {account}
+                                    </p>
                                 )}
                                 <Table
                                     columns={blockchainColumns}
@@ -165,9 +167,9 @@ const Profile: React.FC = () => {
                                     rowKey="id"
                                     rowClassName={getRowClassName}
                                 />
-                                <div style={{ textAlign: 'center', marginTop: '20px' }}>
+                                <div style={{textAlign: 'center', marginTop: '20px'}}>
                                     <Button shape="round" size="small" type="primary"
-                                            style={styles.button} onClick={() => open({ view: 'Networks' })}>
+                                            style={styles.button} onClick={() => open({view: 'Networks'})}>
                                         Switch Network
                                     </Button>
                                 </div>

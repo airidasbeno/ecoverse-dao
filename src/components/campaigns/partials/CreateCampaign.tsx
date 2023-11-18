@@ -113,7 +113,7 @@ const CreateCampaign: React.FC = () => {
                             name="ipfs_metadata"
                             rules={[{required: true, message: 'Input campaign IPFS metadata'}]}
                         >
-                            <Input placeholder="Enter campaign IPFS metadata"  />
+                            <Input placeholder="Enter campaign IPFS metadata"/>
                         </Form.Item>
 
                         <Form.Item<FieldType>
