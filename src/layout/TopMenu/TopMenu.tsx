@@ -59,7 +59,7 @@ const TopMenu: FC = () => {
                     )}
                     {isConnected && (
                         <Menu.Item key="3" style={{ minWidth: '150px', textAlign: 'center' }}>
-                            <Link to="/profile">Profile</Link>
+                            <Link to="/profile">My Profile</Link>
                         </Menu.Item>
                     )}
                 </Menu>

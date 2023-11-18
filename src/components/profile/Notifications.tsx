@@ -104,6 +104,11 @@ const Notifications: React.FC = () => {
 
     return (
         <>
+            <h1>My Profile</h1>
+            <p>Welcome to our unique shopping platform. Experience a whole new world of online shopping where quality
+                meets
+                convenience. Explore our vast range of products, savor exclusive discounts, and enjoy seamless browsing.
+                Your satisfaction is our promise!</p>
             {!isReady ? (
                 <div>Loading your profile...</div>
             ) : (
@@ -112,10 +117,6 @@ const Notifications: React.FC = () => {
                         <div>Connect your wallet to view your profile</div>
                     ) : (
                         <>
-                            <h1>Profile</h1>
-                            <p>Welcome to our unique shopping platform. Experience a whole new world of online shopping where quality meets
-                                convenience. Explore our vast range of products, savor exclusive discounts, and enjoy seamless browsing.
-                                Your satisfaction is our promise!</p>
                             <p>Status: {isConnected ? 'Connected' : 'Not Connected'}</p>
                             <p>Address: {address}</p>
 
@@ -127,7 +128,7 @@ const Notifications: React.FC = () => {
                             ))}
                             <div>Address: {address}</div>
                             <div>Account ID: {account}</div>
-                            <br />
+                            <br/>
                             {!isRegistered ? (
                                 <div>
                                     To manage profile, sign and register an identity key:&nbsp;
@@ -139,24 +140,26 @@ const Notifications: React.FC = () => {
                                 <>
                                     {!isSubscribed ? (
                                         <>
-                                            <Button shape="round" size="small" type="primary" style={styles.button} onClick={performSubscribe} disabled={isSubscribing}>
+                                            <Button shape="round" size="small" type="primary" style={styles.button}
+                                                    onClick={performSubscribe} disabled={isSubscribing}>
                                                 {isSubscribing ? 'Subscribing...' : 'Subscribe to notifications'}
                                             </Button>
                                         </>
                                     ) : (
                                         <>
-                                            <Button shape="round" size="small" type="default" style={styles.button} onClick={performUnsubscribe} disabled={isUnsubscribing}>
+                                            <Button shape="round" size="small" type="default" style={styles.button}
+                                                    onClick={performUnsubscribe} disabled={isUnsubscribing}>
                                                 {isUnsubscribing ? 'Unsubscribing...' : 'Unsubscribe'}
                                             </Button>
                                             {
                                                 <Table
                                                     columns={columns}
                                                     pagination={false}
-                                                    scroll={{ x: true }}
+                                                    scroll={{x: true}}
                                                     size="small"
                                                     dataSource={messages}
-                                                    style={{ marginTop: '10px' }}
-                                                    rowKey="id" />
+                                                    style={{marginTop: '10px'}}
+                                                    rowKey="id"/>
                                             }
                                         </>
                                     )}
