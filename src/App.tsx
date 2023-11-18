@@ -57,7 +57,7 @@ const wagmiConfig = createConfig({
     publicClient
 })
 
-createWeb3Modal({ wagmiConfig, projectId, chains });
+createWeb3Modal({ wagmiConfig, projectId, chains, themeMode: 'light' });
 
 function App() {
     if (!window.Buffer) window.Buffer = Buffer;
