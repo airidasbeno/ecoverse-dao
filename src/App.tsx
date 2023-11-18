@@ -33,9 +33,9 @@ const styles = {
 
 const projectId = process.env.REACT_APP_WALLETCONNECT_PROJECT_ID ?? "";
 
-const {chains, publicClient} = configureChains(
-    [mainnet, sepolia],
-    [walletConnectProvider({projectId}), publicProvider()]
+const { chains, publicClient } = configureChains(
+    [mainnet, scrollSepolia, sepolia, goerli],
+    [walletConnectProvider({ projectId }), publicProvider()]
 );
 
 const metadata = {
@@ -48,19 +48,19 @@ const metadata = {
 const wagmiConfig = createConfig({
     autoConnect: true,
     connectors: [
-        new WalletConnectConnector({chains, options: {projectId, showQrModal: false, metadata}}),
-        new EIP6963Connector({chains}),
-        new InjectedConnector({chains, options: {shimDisconnect: true}}),
-        new CoinbaseWalletConnector({chains, options: {appName: metadata.name}})
+        new WalletConnectConnector({ chains, options: { projectId, showQrModal: false, metadata } }),
+        new EIP6963Connector({ chains }),
+        new InjectedConnector({ chains, options: { shimDisconnect: true } }),
+        new CoinbaseWalletConnector({ chains, options: { appName: metadata.name } })
     ],
     publicClient
 })
 
-createWeb3Modal({wagmiConfig, projectId, chains});
+createWeb3Modal({ wagmiConfig, projectId, chains });
 
 function App() {
     if (!window.Buffer) window.Buffer = Buffer;
-    const {defaultAlgorithm} = theme;
+    const { defaultAlgorithm } = theme;
     return (
         <Router>
             <WagmiConfig config={wagmiConfig}>
@@ -70,13 +70,13 @@ function App() {
                     }}
                 >
                     <Layout style={styles.layout}>
-                        <TopMenu/>
+                        <TopMenu />
                         <MainContent>
                             <Routes>
-                                <Route path="/" element={<Marketplace/>}/>
-                                <Route path="/profile" element={<Profile/>}/>
-                                <Route path="/notifications" element={<Notifications/>}/>
-                                <Route path="/create" element={<CreateCampaign/>}/>
+                                <Route path="/" element={<Marketplace />} />
+                                <Route path="/campaigns" element={<Campaigns />} />
+                                <Route path="/profile" element={<Notifications />} />
+                                <Route path="/create" element={<CreateCampaign />} />
                             </Routes>
                         </MainContent>
                     </Layout>
