@@ -20,7 +20,7 @@ const ProgressSteps: React.FC<ProgressStepsProps> = ({step}) => {
                             },
                             {
                                 title: 'Stage 2',
-                                description: 'Add to marketplace',
+                                description: 'Add to Marketplace',
                             },
                         ]}
                     />
