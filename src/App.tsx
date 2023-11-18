@@ -4,7 +4,7 @@ import {EIP6963Connector, walletConnectProvider} from "@web3modal/wagmi";
 import {createWeb3Modal} from '@web3modal/wagmi/react';
 import {Layout, ConfigProvider, theme} from "antd";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import {goerli, mainnet, scrollSepolia, sepolia} from "viem/chains";
+import {goerli, mainnet, scrollSepolia, sepolia, lineaTestnet} from "viem/chains";
 import {configureChains, createConfig, WagmiConfig} from "wagmi";
 import {CoinbaseWalletConnector} from 'wagmi/connectors/coinbaseWallet';
 import {InjectedConnector} from 'wagmi/connectors/injected';
@@ -34,7 +34,7 @@ const styles = {
 const projectId = process.env.REACT_APP_WALLETCONNECT_PROJECT_ID ?? "";
 
 const { chains, publicClient } = configureChains(
-    [mainnet, scrollSepolia, sepolia, goerli],
+    [mainnet, lineaTestnet, scrollSepolia, sepolia, goerli],
     [walletConnectProvider({ projectId }), publicProvider()]
 );
 
