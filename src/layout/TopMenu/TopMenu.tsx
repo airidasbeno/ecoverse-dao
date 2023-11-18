@@ -4,6 +4,7 @@ import { useWindowWidthAndHeight } from "hooks";
 import { Link } from "react-router-dom";
 import { useWeb3Modal } from '@web3modal/wagmi/react';
 import { useAccount } from "wagmi";
+import logo from "assets/logos/ecoversedoa_logo.png";
 
 const { Header } = Layout;
 
@@ -27,6 +28,10 @@ const styles = {
         fontWeight: "600",
         backgroundColor: "#f5f5f5",
     },
+    logo: {
+        display: 'flex',
+        alignItems: 'center',
+    },
     button: {
         height: "40px",
         padding: "0 20px",
@@ -43,10 +48,16 @@ const TopMenu: FC = () => {
     const { isMobile } = useWindowWidthAndHeight();
     const { open } = useWeb3Modal();
     const { isConnected } = useAccount();
-
     return (
         <Header style={{ ...styles.header, padding: isMobile ? "0 5px 0 5px" : "0 20px" }}>
-            <h2><Link to="/" style={{ color: '#004517' }}>EcoVerse DAO </Link></h2>
+            <h2>
+                <div style={styles.logo}>
+                    <img src={logo} alt="EcoVerse DAO" style={{ height: '80px' }} />
+                    <h2 style={{ marginLeft: '10px' }}>
+                        <Link to="/" style={{ color: '#004517' }}>EcoVerse DAO</Link>
+                    </h2>
+                </div>
+            </h2>
             <div style={styles.headerRight}>
                 <Menu style={styles.headerRight}>
                     <Menu.Item key="1" style={{ minWidth: '150px', textAlign: 'center' }}>
