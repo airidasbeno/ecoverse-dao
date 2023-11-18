@@ -1,15 +1,19 @@
-import React, {FC} from "react";
+import { FC } from 'react';
+import { useLocation } from 'react-router-dom';
+import {useWindowWidthAndHeight} from "../../hooks";
 
-import {useWindowWidthAndHeight} from "hooks";
-
-type MainContentProps = {
-    children?: React.ReactNode;
-};
+type Style = {
+    marginTop: string,
+    padding?: string,
+}
 
 const styles = {
     content: {
         marginTop: "50px",
         padding: "50px",
+    } as Style,
+    homepageContent: {
+        marginTop: "50px",
     },
     contentMobile: {
         display: "flex",
@@ -21,10 +25,24 @@ const styles = {
     }
 } as const;
 
-const MainContent: FC<MainContentProps> = ({children}) => {
-    const {isMobile} = useWindowWidthAndHeight();
+interface MainContentProps {
+    children: React.ReactNode
+}
 
-    return <div style={isMobile ? styles.contentMobile : styles.content}>{children}</div>;
+const MainContent: FC<MainContentProps> = ({children}) => {
+    const { isMobile } = useWindowWidthAndHeight();
+    const location = useLocation();
+
+    let style = styles.content;
+    if (location.pathname === '/') {
+        style = styles.homepageContent;
+    }
+
+    return (
+        <div style={isMobile ? styles.contentMobile : style}>
+            {children}
+        </div>
+    );
 };
 
 export default MainContent;

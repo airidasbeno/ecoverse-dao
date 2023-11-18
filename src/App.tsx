@@ -21,6 +21,7 @@ import SubmitCampaign from "./components/campaigns/partials/SubmitCampaign";
 import "styles/App.css";
 import Campaigns from "components/Campaigns";
 import Homepage from "./components/Homepage";
+import Footer from "./layout/Footer";
 
 const styles = {
     layout: {
@@ -81,6 +82,7 @@ function App() {
                                 <Route path="/profile" element={<Profile />} />
                             </Routes>
                         </MainContent>
+                        <Footer />
                     </Layout>
                 </ConfigProvider>
             </WagmiConfig>
