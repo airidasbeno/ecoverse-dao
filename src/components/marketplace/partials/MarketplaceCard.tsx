@@ -1,5 +1,7 @@
-import React from 'react';
-import {Button} from 'antd';
+import React, { useState } from 'react';
+import { Button } from 'antd';
+import ViewCampaign from "../../campaigns/ViewCampaign";
+
 
 const styles = {
     card: {
@@ -27,19 +29,32 @@ const styles = {
     },
 } as const;
 
-const MarketplaceCard: React.FC = () => (
-    <>
-        <div style={styles.card}>
-            <h2>Campaign Title</h2>
-            <p>Campaign short description, Campaign short description...</p>
-            <img src={'https://random.imagecdn.app/200/150'}
-                 alt={'Campaign Title'}
-                 title={"Campaign Title"}
-                 style={styles.image}/>
-            <Button shape="round" type="primary" style={styles.button}>
-                View Campaign
-            </Button>
-        </div>
-    </>
-);
+const MarketplaceCard: React.FC = () => {
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
+    const handleViewCampaignClick = () => {
+        setIsModalVisible(true);
+    };
+
+    const handleModalClose = () => {
+        setIsModalVisible(false);
+    };
+
+    return (
+        <>
+            <div style={styles.card}>
+                <h2>Campaign Title</h2>
+                <p>Campaign short description, Campaign short description...</p>
+                <img src={'https://random.imagecdn.app/200/150'}
+                    alt={'Campaign Title'}
+                    title={"Campaign Title"}
+                    style={styles.image} />
+                <Button shape="round" type="primary" onClick={handleViewCampaignClick} style={styles.button}>
+                    View Campaign
+                </Button>
+                <ViewCampaign isVisible={isModalVisible} onClose={handleModalClose} />
+            </div>
+        </>
+    );
+}
 export default MarketplaceCard;
