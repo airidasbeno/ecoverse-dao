@@ -59,9 +59,11 @@ const MarketplaceCard: React.FC = () => {
                         </Button>
                     </div>
                 ) : (
-                    <Button shape="round" type="primary" style={styles.button} onClick={() => open()}>
-                        Connect to Vote
-                    </Button>
+                    <div style={{ textAlign: 'center', marginTop: '15px' }}>
+                        <Button shape="round" type="primary" style={styles.button} onClick={() => open()}>
+                            Connect to Vote
+                        </Button>
+                    </div>
                 )}
             </Card>
             <ViewCampaign isVisible={isModalVisible} onClose={handleModalClose}/>
