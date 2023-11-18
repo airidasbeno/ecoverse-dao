@@ -1,4 +1,4 @@
-program enviromentNft.aleo {
+program environment.aleo {
     mapping account: address => u64;
 
     record token {
