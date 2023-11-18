@@ -12,12 +12,12 @@ const Notifications: React.FC = () => {
     const { address } = useAccount();
     const { signMessageAsync } = useSignMessage();
 
-    const projectId = process.env.REACT_APP_WALLETCONNECT_PROJECT_ID ?? "";
+    const projectId = process.env.REACT_APP_WALLETCONNECT_PROJECT_ID ?? '';
     // Initialize the Web3Inbox SDK
     const isReady = useInitWeb3InboxClient({
         // The project ID and domain you setup in the Domain Setup section
         projectId,
-        domain: 'hackathon-front-end-eta.vercel.app',
+        domain: process.env.REACT_APP_WALLETCONNECT_DOMAIN ?? '',
 
         // Allow localhost development with "unlimited" mode.
         // This authorizes this dapp to control notification subscriptions for all domains (including `app.example.com`), not just `window.location.host`
