@@ -4,7 +4,7 @@ import {EIP6963Connector, walletConnectProvider} from "@web3modal/wagmi";
 import {createWeb3Modal} from '@web3modal/wagmi/react';
 import {Layout, ConfigProvider, theme} from "antd";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import {goerli, mainnet, scrollSepolia, sepolia} from "viem/chains";
+import {goerli, mainnet, scrollSepolia, sepolia, lineaTestnet} from "viem/chains";
 import {configureChains, createConfig, WagmiConfig} from "wagmi";
 import {CoinbaseWalletConnector} from 'wagmi/connectors/coinbaseWallet';
 import {InjectedConnector} from 'wagmi/connectors/injected';
@@ -13,13 +13,15 @@ import {publicProvider} from 'wagmi/providers/public';
 
 import {TopMenu, MainContent} from "layout";
 
-import CreateCampaign from "./components/campaigns/CreateCampaign";
-import Marketplace from "./components/marketplace/Marketplace";
-import Notifications from "./components/profile/Notifications";
-import AddToMarketplace from "./components/campaigns/AddToMarketplace";
+import CreateCampaign from "./components/campaigns/partials/CreateCampaign";
+import Marketplace from "./components/Marketplace";
+import Profile from "./components/Profile";
+import SubmitCampaign from "./components/campaigns/partials/SubmitCampaign";
 
 import "styles/App.css";
-import Campaigns from "components/campaigns/Campaigns";
+import Campaigns from "components/Campaigns";
+import Homepage from "./components/Homepage";
+import Footer from "./layout/Footer";
 
 const styles = {
     layout: {
@@ -33,14 +35,14 @@ const styles = {
 const projectId = process.env.REACT_APP_WALLETCONNECT_PROJECT_ID ?? "";
 
 const { chains, publicClient } = configureChains(
-    [mainnet, scrollSepolia, sepolia, goerli],
+    [mainnet, lineaTestnet, scrollSepolia, sepolia, goerli],
     [walletConnectProvider({ projectId }), publicProvider()]
 );
 
 const metadata = {
-    name: 'Web3Modal',
-    description: 'Web3Modal Example',
-    url: 'https://web3modal.com',
+    name: 'EcoVerse DAO',
+    description: 'EcoVerse DAO - Empowering Earth, Enabling Change',
+    url: 'https://hackathon-front-end-eta.vercel.app',
     icons: ['https://avatars.githubusercontent.com/u/37784886']
 };
 
@@ -55,7 +57,7 @@ const wagmiConfig = createConfig({
     publicClient
 })
 
-createWeb3Modal({ wagmiConfig, projectId, chains });
+createWeb3Modal({ wagmiConfig, projectId, chains, themeMode: 'light' });
 
 function App() {
     if (!window.Buffer) window.Buffer = Buffer;
@@ -72,13 +74,15 @@ function App() {
                         <TopMenu />
                         <MainContent>
                             <Routes>
-                                <Route path="/" element={<Marketplace />} />
+                                <Route path="/" element={<Homepage />} />
+                                <Route path="/marketplace" element={<Marketplace />} />
                                 <Route path="/campaigns" element={<Campaigns />} />
                                 <Route path="/campaigns/create" element={<CreateCampaign />} />
-                                <Route path="/campaigns/add-to-marketplace" element={<AddToMarketplace />} />
-                                <Route path="/profile" element={<Notifications />} />
+                                <Route path="/campaigns/submit" element={<SubmitCampaign />} />
+                                <Route path="/profile" element={<Profile />} />
                             </Routes>
                         </MainContent>
+                        <Footer />
                     </Layout>
                 </ConfigProvider>
             </WagmiConfig>

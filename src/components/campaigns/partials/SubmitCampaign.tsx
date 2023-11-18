@@ -1,13 +1,25 @@
 import React from 'react';
 import {Button, Col, Form, InputNumber, message, Row} from 'antd';
-import ProgressSteps from "./partials/ProgressSteps";
+import ProgressSteps from "./ProgressSteps";
 
+const styles = {
+    button: {
+        height: "40px",
+        padding: "0 20px",
+        textAlign: "center",
+        fontWeight: "600",
+        letterSpacing: "0.2px",
+        fontSize: "15px",
+        border: "none",
+        borderRadius: '32px',
+    },
+} as const;
 
 type FieldType = {
     budget: number;
 };
 
-const AddToMarketplace: React.FC = () => {
+const SubmitCampaign: React.FC = () => {
     const [messageApi, contextHolder] = message.useMessage();
 
     const onFinish = () => {
@@ -47,12 +59,12 @@ const AddToMarketplace: React.FC = () => {
                             name="budget"
                             rules={[{required: true, message: 'Input project budget'}]}
                         >
-                            <InputNumber prefix="$" style={{ width: '100%' }} />
+                            <InputNumber prefix="$" style={{width: '100%'}}/>
                         </Form.Item>
 
                         <Form.Item wrapperCol={{offset: 12, span: 12}}>
-                            <Button type="primary" htmlType="submit">
-                                Submit to Marketplace
+                            <Button type="primary" htmlType="submit" style={styles.button}>
+                                Submit Campaign
                             </Button>
                         </Form.Item>
                     </Form>
@@ -62,4 +74,4 @@ const AddToMarketplace: React.FC = () => {
     );
 };
 
-export default AddToMarketplace;
+export default SubmitCampaign;

@@ -12,7 +12,7 @@ const ProgressSteps: React.FC<ProgressStepsProps> = ({step}) => {
             <Row>
                 <Col span={12} offset={6}>
                     <Steps
-                        current={step-1}
+                        current={step - 1}
                         items={[
                             {
                                 title: 'Stage 1',

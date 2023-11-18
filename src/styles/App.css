@@ -55,6 +55,11 @@ body {
     opacity: 0.9;
 }
 
+.ant-btn-default:not(:disabled):not(.ant-btn-disabled) {
+    color: #004517;
+    border: 2px solid #004517 !important;
+}
+
 .ant-btn-default:not(:disabled):not(.ant-btn-disabled):hover {
     color: #004517;
     border-color: #004517;
@@ -128,4 +133,31 @@ body {
 
 .ant-input:focus, .ant-input:hover {
     border-color: #004517 !important;
+}
+
+.countdown-container {
+    width: 100%;
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.countdown-item {
+    font-size: 25px;
+    font-weight: 600;
+    width: 100%;
+    color: #004517;
+    margin: 0;
+    background-color: #d6edde;
+    border: 2px solid #004517;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.countdown-colon {
+    font-size: 25px;
+    padding: 0 4px;
+    color: #004517;
+    display: flex;
+    align-items: center;
 }
