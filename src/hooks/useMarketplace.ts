@@ -2,8 +2,6 @@ import { useState} from 'react';
 
 import { ethers } from 'ethers';
 
-import { contractAddreses } from './useMint';
-
 import contractAbi from '../assets/abis/marketplace.json';
 
 export interface Listing {
@@ -12,6 +10,12 @@ export interface Listing {
     tokenId: string;
     price: number;
 }
+
+const contractAddreses:  { [key: number]: string }= {
+    5: "0xF6466904489b4b2cf375FE26d8Ac297Cfc6f49dF",
+    111: "",
+}
+
 
 export const useNFTMarketplace = async () => {
     const [listings, setListings] = useState<Listing[]>([]);
@@ -38,7 +42,8 @@ export const useNFTMarketplace = async () => {
 
     const purchaseNFT = async (listingIndex: number) => {
         try {
-            const transaction = await contract.purchaseNFT(listingIndex, { value: ethers.utils.parseEther(String(listings[listingIndex].price)) });
+            const fetchedListings = await contract.getAllListings();
+            const transaction = await contract.purchaseNFT(listingIndex, { value: ethers.utils.parseEther(String(fetchedListings[listingIndex].price)) });
             await transaction.wait();
             console.log('NFT purchased successfully');
         } catch (error) {
