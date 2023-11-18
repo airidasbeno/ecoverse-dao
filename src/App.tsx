@@ -16,7 +16,7 @@ import {TopMenu, MainContent} from "layout";
 import CreateCampaign from "./components/campaigns/CreateCampaign";
 import Marketplace from "./components/marketplace/Marketplace";
 import Profile from "./components/profile/Profile";
-import AddToMarketplace from "./components/campaigns/AddToMarketplace";
+import SubmitCampaign from "./components/campaigns/SubmitCampaign";
 
 import "styles/App.css";
 import Campaigns from "components/campaigns/Campaigns";
@@ -77,7 +77,7 @@ function App() {
                                 <Route path="/marketplace" element={<Marketplace />} />
                                 <Route path="/campaigns" element={<Campaigns />} />
                                 <Route path="/campaigns/create" element={<CreateCampaign />} />
-                                <Route path="/campaigns/add-to-marketplace" element={<AddToMarketplace />} />
+                                <Route path="/campaigns/submit" element={<SubmitCampaign />} />
                                 <Route path="/profile" element={<Profile />} />
                             </Routes>
                         </MainContent>

@@ -7,7 +7,7 @@ type FieldType = {
     budget: number;
 };
 
-const AddToMarketplace: React.FC = () => {
+const SubmitCampaign: React.FC = () => {
     const [messageApi, contextHolder] = message.useMessage();
 
     const onFinish = () => {
@@ -62,4 +62,4 @@ const AddToMarketplace: React.FC = () => {
     );
 };
 
-export default AddToMarketplace;
+export default SubmitCampaign;
