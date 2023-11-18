@@ -132,7 +132,7 @@ const Notifications: React.FC = () => {
                                 </div>
                             ) : (
                                 <>
-                                    {isSubscribed ? (
+                                    {!isSubscribed ? (
                                         <>
                                             <button onClick={performSubscribe} disabled={isSubscribing}>
                                                 {isSubscribing ? 'Subscribing...' : 'Subscribe to notifications'}
