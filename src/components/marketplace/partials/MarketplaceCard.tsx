@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from 'antd';
 import ViewCampaign from "../../campaigns/partials/ViewCampaign";
+import Countdown from "./Countdown";
 
 const styles = {
     card: {
@@ -23,7 +24,7 @@ const styles = {
         fontWeight: "600",
         letterSpacing: "0.2px",
         fontSize: "15px",
-        margin: "10px 0",
+        margin: "10px 5px",
         border: "none",
     },
 } as const;
@@ -48,8 +49,12 @@ const MarketplaceCard: React.FC = () => {
                     alt={'Campaign Title'}
                     title={"Campaign Title"}
                     style={styles.image} />
+                <Countdown />
+                <Button shape="round" type="default" onClick={handleViewCampaignClick} style={styles.button}>
+                    More Details
+                </Button>
                 <Button shape="round" type="primary" onClick={handleViewCampaignClick} style={styles.button}>
-                    View Campaign
+                    Vote
                 </Button>
                 <ViewCampaign isVisible={isModalVisible} onClose={handleModalClose} />
             </div>
