@@ -140,7 +140,7 @@ const Profile: React.FC = () => {
 
     const blockchainColumns = [
         {
-            title: 'Blockchain',
+            title: 'Network',
             dataIndex: 'name',
             key: 'name'
         },
