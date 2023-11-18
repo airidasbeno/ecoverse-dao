@@ -17,7 +17,7 @@ const styles = {
         width: "100%",
         backgroundColor: "#f5f5f5",
         paddingTop: "15px",
-        zIndex: 1,
+        zIndex: 2,
         boxShadow: '0 0 5px rgba(0, 0, 0, 0.2)',
     },
     headerRight: {

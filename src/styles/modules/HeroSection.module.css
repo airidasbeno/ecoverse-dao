@@ -8,6 +8,7 @@
 }
 
 .mastheadContent {
+    z-index: 1;
     position: relative;
     text-align: center;
 }
@@ -24,6 +25,7 @@
 }
 
 .backgroundCircle {
+    z-index: 0;
     position: absolute;
     border-radius: 100%;
     background: linear-gradient(0deg, #167332 0%, #004517 100%);
