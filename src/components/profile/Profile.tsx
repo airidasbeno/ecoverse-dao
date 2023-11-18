@@ -1,5 +1,7 @@
 import React from 'react';
 import { useAccount, useChainId } from "wagmi";
+import { Col, Row } from 'antd';
+import ProfileCard from "./partials/ProfileCard";
 
 const Profile: React.FC = () => {
     const { address, isConnected, connector } = useAccount();
@@ -20,6 +22,15 @@ const Profile: React.FC = () => {
                     Blockchain: {chain.name} ({chain.id})
                 </p>
             ))}
+            <h2>Campaigns</h2>
+            <Row>
+                <Col span={4}>
+                    <ProfileCard />
+                </Col>
+                <Col span={4}>
+                    <ProfileCard />
+                </Col>
+            </Row>
         </>
     );
 };
