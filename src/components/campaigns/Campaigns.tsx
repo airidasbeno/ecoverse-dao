@@ -7,10 +7,10 @@ const Campaigns: React.FC = () => {
         <>
             <h1 style={{ textAlign: 'center' }}>Your Campaigns</h1>
             <Row>
-                <Col span={4}>
+                <Col span={6}>
                     <MarketplaceCard />
                 </Col>
-                <Col span={4}>
+                <Col span={6}>
                     <MarketplaceCard />
                 </Col>
             </Row>

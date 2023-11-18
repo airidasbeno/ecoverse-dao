@@ -30,7 +30,7 @@ const styles = {
 
 
 
-const ProfileCard: React.FC = () => {
+const CampaignCard: React.FC = () => {
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -60,4 +60,4 @@ const ProfileCard: React.FC = () => {
     </>
   );
 }
-export default ProfileCard;
+export default CampaignCard;

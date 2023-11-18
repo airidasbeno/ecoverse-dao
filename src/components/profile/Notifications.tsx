@@ -6,7 +6,7 @@ import {
 } from '@web3inbox/widget-react'
 import React, { useCallback, useEffect } from 'react';
 import { useSignMessage, useAccount, useChainId } from 'wagmi';
-import { Table, Button } from 'antd';
+import { Table, Button, Card, Row, Col, Tag } from 'antd';
 
 const styles = {
     button: {
@@ -19,6 +19,14 @@ const styles = {
         marginLeft: "10px",
         border: "none",
     },
+    statusTag: {
+        fontSize: '14px',
+        fontWeight: 'bold',
+    },
+    connectedRow: {
+        background: '#4caf50',
+    },
+
 } as const;
 
 const Notifications: React.FC = () => {
@@ -101,7 +109,25 @@ const Notifications: React.FC = () => {
             }
         },
     ];
-
+    const blockchainColumns = [
+        {
+            title: 'Blockchain',
+            dataIndex: 'name',
+            key: 'name'
+        },
+        {
+            title: 'ID',
+            dataIndex: 'id',
+            key: 'id',
+            style: { background: '#4caf50' }
+        },
+    ];
+    const getRowClassName = (record: { id: number }) => {
+        return connectedChainId === record.id ? 'selected-row' : '';
+    };
+    const tableTitle = () => (
+        <h2 style={{ textAlign: 'center', margin: '10px 0' }}>Notifications</h2>
+    );
     return (
         <>
             {!isReady ? (
@@ -112,56 +138,65 @@ const Notifications: React.FC = () => {
                         <div>Connect your wallet to view your profile</div>
                     ) : (
                         <>
-                            <h1>Profile</h1>
-                            <p>Welcome to our unique shopping platform. Experience a whole new world of online shopping where quality meets
-                                convenience. Explore our vast range of products, savor exclusive discounts, and enjoy seamless browsing.
-                                Your satisfaction is our promise!</p>
-                            <p>Status: {isConnected ? 'Connected' : 'Not Connected'}</p>
-                            <p>Address: {address}</p>
+                            <Row gutter={16}>
+                                <Col span={8}>
+                                    <Card title="Profile"
+                                        extra={
+                                            <Tag color={isConnected ? 'green' : 'red'} style={styles.statusTag}>
+                                                {isConnected ? 'Connected' : 'Not Connected'}
+                                            </Tag>
+                                        }>
+                                        <p>Address: {address}</p>
 
-                            {connector?.chains.map((chain, index) => (
-                                <p key={index}>
-                                    <strong>{connectedChainId === chain.id ? 'Current - ' : ''}</strong>
-                                    Blockchain: {chain.name} ({chain.id})
-                                </p>
-                            ))}
-                            <div>Address: {address}</div>
-                            <div>Account ID: {account}</div>
-                            <br />
-                            {!isRegistered ? (
-                                <div>
-                                    To manage profile, sign and register an identity key:&nbsp;
-                                    <button onClick={performRegistration} disabled={isRegistering}>
-                                        {isRegistering ? 'Signing...' : 'Sign'}
-                                    </button>
-                                </div>
-                            ) : (
-                                <>
-                                    {!isSubscribed ? (
-                                        <>
-                                            <Button shape="round" size="small" type="primary" style={styles.button} onClick={performSubscribe} disabled={isSubscribing}>
-                                                {isSubscribing ? 'Subscribing...' : 'Subscribe to notifications'}
-                                            </Button>
-                                        </>
+                                        <Table
+                                            columns={blockchainColumns}
+                                            dataSource={connector?.chains || []}
+                                            pagination={false}
+                                            rowKey="id"
+                                            rowClassName={getRowClassName}
+                                        />
+                                        <div>Account ID: {account}</div>
+                                        <br />
+                                    </Card>
+                                </Col>
+                                <Col span={16}>
+                                    {!isRegistered ? (
+                                        <div>
+                                            To manage profile, sign and register an identity key:&nbsp;
+                                            <button onClick={performRegistration} disabled={isRegistering}>
+                                                {isRegistering ? 'Signing...' : 'Sign'}
+                                            </button>
+                                        </div>
                                     ) : (
                                         <>
-                                            <Button shape="round" size="small" type="default" style={styles.button} onClick={performUnsubscribe} disabled={isUnsubscribing}>
-                                                {isUnsubscribing ? 'Unsubscribing...' : 'Unsubscribe'}
-                                            </Button>
-                                            {
-                                                <Table
-                                                    columns={columns}
-                                                    pagination={false}
-                                                    scroll={{ x: true }}
-                                                    size="small"
-                                                    dataSource={messages}
-                                                    style={{ marginTop: '10px' }}
-                                                    rowKey="id" />
-                                            }
+                                            {!isSubscribed ? (
+                                                <>
+                                                    <Button shape="round" size="small" type="primary" style={styles.button} onClick={performSubscribe} disabled={isSubscribing}>
+                                                        {isSubscribing ? 'Subscribing...' : 'Subscribe to notifications'}
+                                                    </Button>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <Button shape="round" size="small" type="default" style={styles.button} onClick={performUnsubscribe} disabled={isUnsubscribing}>
+                                                        {isUnsubscribing ? 'Unsubscribing...' : 'Unsubscribe'}
+                                                    </Button>
+                                                    {
+                                                        <Table
+                                                            columns={columns}
+                                                            pagination={false}
+                                                            scroll={{ x: true }}
+                                                            title={tableTitle}
+                                                            size="small"
+                                                            dataSource={messages}
+                                                            style={{ marginTop: '10px' }}
+                                                            rowKey="id" />
+                                                    }
+                                                </>
+                                            )}
                                         </>
                                     )}
-                                </>
-                            )}
+                                </Col>
+                            </Row>
                         </>
                     )}
                 </>
