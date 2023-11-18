@@ -1,37 +1,39 @@
 import React from 'react';
-import { Modal, Card } from 'antd';
+import {Modal, Card} from 'antd';
 
 interface ViewCampaignProps {
-  isVisible: boolean;
-  onClose: () => void;
+    isVisible: boolean;
+    onClose: () => void;
 }
 
-const ViewCampaign: React.FC<ViewCampaignProps> = ({ isVisible, onClose }) => {
-  return (
-    <>
-      <Modal
-        title="Conservation Campaign Details"
-        visible={isVisible}
-        onOk={onClose}
-        onCancel={onClose}
-        width={600} // Set the width as needed
-      >
-        <Card>
-          <h2>Campaign Title</h2>
-          <p>
-            Start Date: January 1, 2023
-            <br />
-            End Date: February 1, 2023
-          </p>
-          <p>
-            Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-          {/* Add more campaign details as needed */}
-        </Card>
-      </Modal>
-    </>
-  );
+const ViewCampaign: React.FC<ViewCampaignProps> = ({isVisible, onClose}) => {
+    return (
+        <>
+            <Modal
+                title="Campaign Title"
+                visible={isVisible}
+                onOk={onClose}
+                onCancel={onClose}
+                width={600} // Set the width as needed
+            >
+                <Card>
+                    <p>
+                        <strong>End Date:</strong> February 1, 2023
+                    </p>
+                    <p>
+                        <strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+                    <p>
+                        <strong>NFT Count:</strong> 10,000
+                    </p>
+                    <p>
+                        <strong>IPFS metadata:</strong> https://example.com
+                    </p>
+                </Card>
+            </Modal>
+        </>
+    );
 };
 
 export default ViewCampaign;
