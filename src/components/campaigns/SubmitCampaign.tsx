@@ -2,6 +2,18 @@ import React from 'react';
 import {Button, Col, Form, InputNumber, message, Row} from 'antd';
 import ProgressSteps from "./partials/ProgressSteps";
 
+const styles = {
+    button: {
+        height: "40px",
+        padding: "0 20px",
+        textAlign: "center",
+        fontWeight: "600",
+        letterSpacing: "0.2px",
+        fontSize: "15px",
+        border: "none",
+        borderRadius: '32px',
+    },
+} as const;
 
 type FieldType = {
     budget: number;
@@ -51,8 +63,8 @@ const SubmitCampaign: React.FC = () => {
                         </Form.Item>
 
                         <Form.Item wrapperCol={{offset: 12, span: 12}}>
-                            <Button type="primary" htmlType="submit">
-                                Submit to Marketplace
+                            <Button type="primary" htmlType="submit" style={styles.button}>
+                                Submit Campaign
                             </Button>
                         </Form.Item>
                     </Form>

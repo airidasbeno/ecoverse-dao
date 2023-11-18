@@ -6,6 +6,19 @@ import TextArea from "antd/es/input/TextArea";
 import {RangePickerProps} from "antd/es/date-picker";
 import ProgressSteps from "./partials/ProgressSteps";
 
+const styles = {
+    button: {
+        height: "40px",
+        padding: "0 20px",
+        textAlign: "center",
+        fontWeight: "600",
+        letterSpacing: "0.2px",
+        fontSize: "15px",
+        border: "none",
+        borderRadius: '32px',
+    },
+} as const;
+
 dayjs.extend(customParseFormat);
 
 const range = (start: number, end: number) => {
@@ -117,7 +130,7 @@ const CreateCampaign: React.FC = () => {
                         </Form.Item>
 
                         <Form.Item wrapperCol={{offset: 12, span: 12}}>
-                            <Button type="primary" htmlType="submit">
+                            <Button type="primary" htmlType="submit" style={styles.button}>
                                 Create Campaign
                             </Button>
                         </Form.Item>
