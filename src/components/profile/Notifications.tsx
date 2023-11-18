@@ -7,10 +7,24 @@ import {
 } from '@web3inbox/widget-react'
 import React, { useCallback, useEffect } from 'react';
 import { useSignMessage, useAccount } from 'wagmi';
-import { Table } from 'antd';
+import { Table, Button } from 'antd';
+
+const styles = {
+    button: {
+        height: "40px",
+        padding: "0 20px",
+        textAlign: "center",
+        fontWeight: "600",
+        letterSpacing: "0.2px",
+        fontSize: "15px",
+        marginLeft: "10px",
+        border: "none",
+    },
+} as const;
 
 
 const Notifications: React.FC = () => {
+    // const [messagesState, setMessagesState] = useState([])
     const { address } = useAccount();
     const { signMessageAsync } = useSignMessage();
 
@@ -59,7 +73,7 @@ const Notifications: React.FC = () => {
 
     const { subscription } = useSubscription()
     const { messages } = useMessages()
-    console.log(messages)
+    console.log("messages", messages)
 
     // const messages = [{ "id": 1700292763470, "topic": "0d9d529b5895dba78955a39d4317d518661db72f74332b348b3e840636947051", "message": { "id": "10fe466f-c2c8-4e50-9a17-ad4df8779a11", "type": "7c18bf6a-62f2-4443-b911-4647f6966b8a", "title": "2123", "body": "123123", "icon": "https://imagedelivery.net/_aTEfDRm7z3tKgu9JhfeKA/null/md", "url": "https://cloud.walletconnect.com/app/notify" }, "publishedAt": 1700292763000 }]
 
@@ -104,7 +118,19 @@ const Notifications: React.FC = () => {
             title: 'URL',
             dataIndex: ['message', 'url'],
             key: 'url',
-            render: (text: string) => <a href={text}>{text}</a>
+            render: (text: string) => {
+                if (text.split("")[0] === "{") {
+                    const urlObj = JSON.parse(text)
+                    console.log("urlObj", urlObj)
+                    return (
+                        <Button shape="round" size="small" type="primary" style={styles.button} onClick={() => window.open(urlObj.title, "_blank")}>{urlObj.contract}</Button>
+                    )
+                } else {
+                    return (
+                        null
+                    )
+                }
+            }
         },
         {
             title: 'Published At',
