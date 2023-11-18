@@ -127,7 +127,7 @@ const Notifications: React.FC = () => {
                     const urlObj = JSON.parse(text)
                     console.log("urlObj", urlObj)
                     return (
-                        <Button shape="round" size="small" type="primary" style={styles.button} onClick={() => window.open(urlObj.title, "_blank")}>{urlObj.contract}</Button>
+                        <Button shape="round" size="small" type="primary" style={styles.button} onClick={() => window.open(urlObj.contract, "_blank")}>{urlObj.title}</Button>
                     )
                 } else {
                     return (
@@ -181,10 +181,10 @@ const Notifications: React.FC = () => {
                                                 <Table
                                                     columns={columns}
                                                     pagination={false}
-                                                    scroll={{x: true}}
+                                                    scroll={{ x: true }}
                                                     size="small"
                                                     dataSource={messages}
-                                                    rowKey="id"/>
+                                                    rowKey="id" />
                                             }
                                         </>
                                     )}
