@@ -16,7 +16,6 @@ const contractAddreses:  { [key: number]: string }= {
     534351: "0xB16d8FBFaB7439C562A37378fbF276183D304B28",
 }
 
-
 export const useNFTMarketplace = async () => {
     const [listings, setListings] = useState<Listing[]>([]);
     const provider = new ethers.providers.Web3Provider(window.ethereum as unknown as ethers.providers.ExternalProvider);
@@ -24,10 +23,6 @@ export const useNFTMarketplace = async () => {
     const network = await provider.getNetwork();
     const currentAddress = contractAddreses[network.chainId];
     const contract = new ethers.Contract(currentAddress, contractAbi, signer);
-
-    // useEffect(async () => {
-    //     await fetchAllListings()
-    // }, []);
 
     const listNFT = async (tokenAddress: string, tokenId: number, price: number) => {
         try {

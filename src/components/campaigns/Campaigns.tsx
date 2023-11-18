@@ -10,10 +10,10 @@ const Campaigns: React.FC = () => {
                 meets convenience. Explore our vast range of products, savor exclusive discounts, and enjoy seamless browsing. Your satisfaction is our promise!</p>
             <Row>
                 <Col span={6}>
-                    <MarketplaceCard/>
+                    <MarketplaceCard />
                 </Col>
                 <Col span={6}>
-                    <MarketplaceCard/>
+                    <MarketplaceCard />
                 </Col>
             </Row>
         </>

@@ -43,6 +43,18 @@ body {
     border-color: #d6edde !important;
 }
 
+.selected-row {
+    background-color: #d6edde;
+}
+
+.selected-row:hover {
+    .ant-table-cell {
+        background-color: #d6edde !important;
+    }
+
+    opacity: 0.9;
+}
+
 .ant-btn-default:not(:disabled):not(.ant-btn-disabled):hover {
     color: #004517;
     border-color: #004517;
