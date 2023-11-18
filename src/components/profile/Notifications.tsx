@@ -63,13 +63,17 @@ const Notifications: React.FC = () => {
         performRegistration()
     }, [performRegistration])
 
-    const { isSubscribed, isSubscribing, subscribe } = useManageSubscription()
+    const { isSubscribed, isSubscribing, subscribe, isUnsubscribing, unsubscribe } = useManageSubscription()
 
     const performSubscribe = useCallback(async () => {
         // Register again just in case
         await performRegistration()
         await subscribe()
     }, [subscribe, isRegistered])
+
+    const performUnsubscribe = useCallback(async () => {
+        await unsubscribe()
+    }, [unsubscribe, isRegistered])
 
     const { subscription } = useSubscription()
     const { messages } = useMessages()
@@ -169,16 +173,18 @@ const Notifications: React.FC = () => {
                                         </>
                                     ) : (
                                         <>
-                                            <div>You are subscribed</div>
+                                            <button onClick={performUnsubscribe} disabled={isUnsubscribing}>
+                                                {isUnsubscribing ? 'Unsubscribing...' : 'Unsubscribe'}
+                                            </button>
                                             <div>Subscription: {JSON.stringify(subscription)}</div>
                                             {messages.length === 0 ? <div>No messages</div> :
                                                 <Table
                                                     columns={columns}
                                                     pagination={false}
-                                                    scroll={{ x: true }}
+                                                    scroll={{x: true}}
                                                     size="small"
                                                     dataSource={messages}
-                                                    rowKey="id" />
+                                                    rowKey="id"/>
                                             }
                                         </>
                                     )}
