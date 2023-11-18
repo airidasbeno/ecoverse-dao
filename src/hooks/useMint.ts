@@ -19,14 +19,27 @@ export const contractAddresses: { [key: number]: string } = {
             const dataBytes = data ? ethers.utils.toUtf8Bytes(data) : '0x';
 
             const mintTx = await contract.mintUniqueToken(signer.getAddress(), amount, tokenURI, dataBytes);
-            await mintTx.wait();
-            console.log('Minting successful', mintTx.hash);
-            return { success: true, hash: mintTx.hash };
+            const receipt = await mintTx.wait();
+            const tokenId = extractTokenIdFromReceipt(receipt);
+
+            console.log('Minting successful', mintTx.hash, tokenId);
+            return { success: true, hash: mintTx.hash, tokenId: tokenId };
         } catch (error) {
             console.error('Error minting token:', error);
             return { success: false, hash: null };
         }
     };
+
+    const extractTokenIdFromReceipt = (receipt: { events: any; }) => {
+        for (const event of receipt.events) {
+            console.log("Event: ", event);
+            if (event.event === 'TransferSingle' && event.args.length > 0) {
+                return event.args[3].toString();
+            }
+        }
+        return null;
+    };
+    
 
 
 export default mintUniqueToken;

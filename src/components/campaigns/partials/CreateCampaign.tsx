@@ -62,8 +62,8 @@ const CreateCampaign: React.FC = () => {
             setMinting(true);
 
             const result = await mintUniqueToken(values.nft_count, values.ipfs_metadata, values.description);
-
-            if (!result) {
+    
+            if (!result.success) {
                 messageApi.open({
                     type: 'error',
                     content: 'Error occurred during minting.',
