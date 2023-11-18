@@ -145,7 +145,7 @@ const Profile: React.FC = () => {
             key: 'name'
         },
         {
-            title: 'ID',
+            title: 'Network ID',
             dataIndex: 'id',
             key: 'id',
             style: {background: '#4caf50'}
@@ -157,11 +157,6 @@ const Profile: React.FC = () => {
 
     return (
         <>
-            <h1>My Profile</h1>
-            <p>Welcome to our unique shopping platform. Experience a whole new world of online shopping where quality
-                meets
-                convenience. Explore our vast range of products, savor exclusive discounts, and enjoy seamless browsing.
-                Your satisfaction is our promise!</p>
             <Row gutter={16}>
                 <Col span={8}>
                     <Card title="Profile"
@@ -172,7 +167,7 @@ const Profile: React.FC = () => {
                           }>
                         {isConnected && (
                             <>
-                                <p style={{marginTop: 0}}><strong>Your Address:</strong> {address}</p>
+                                <p style={{marginTop: 0}}><strong>Wallet Address:</strong> {address}</p>
                                 {isRegistered && (
                                     <p style={{marginBottom: '30px'}}>
                                         <strong>Web3Inbox Account ID:</strong> {account}
@@ -203,12 +198,13 @@ const Profile: React.FC = () => {
                     </Card>
                 </Col>
                 <Col span={16}>
-                    <h2 style={{marginTop: 0}}>Notifications</h2>
-                    <p>Stay informed with personalized notifications tailored to your
-                        preferences. Receive timely updates and alerts with our user-friendly
-                        notification system.</p>
+                    <h2 style={{marginTop: 0}}>Web3Inbox Notifications</h2>
+                    <p>Stay well-informed with timely voting reminders across various campaigns within our EcoVerse DAO.
+                        Harness the power of WalletConnect and Web3Inbox Notifications to ensure that you never miss a
+                        crucial moment in shaping our collective future.
+                    </p>
                     {!account && (isConnected || isRegistered) ? (
-                        <Spin tip="Loading" size="large" style={{marginTop: '50px' }}>
+                        <Spin tip="Loading" size="large" style={{marginTop: '50px'}}>
                             <div className="content"/>
                         </Spin>
                     ) : (

@@ -80,8 +80,8 @@ const TopMenu: FC = () => {
                     </Button>
                 )}
                 {isConnected && (
-                    <Button shape="round" type="primary" style={styles.button} onClick={() => open({ view: 'Account' })}>
-                        Connected Wallet
+                    <Button shape="round" type="default" style={styles.button} onClick={() => open({ view: 'Account' })}>
+                        Wallet Connected
                     </Button>
                 )}
                 {isConnected && (
