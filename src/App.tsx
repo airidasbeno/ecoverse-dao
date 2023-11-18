@@ -4,7 +4,7 @@ import {EIP6963Connector, walletConnectProvider} from "@web3modal/wagmi";
 import {createWeb3Modal} from '@web3modal/wagmi/react';
 import {Layout, ConfigProvider, theme} from "antd";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import {mainnet, sepolia} from "viem/chains";
+import {goerli, mainnet, scrollSepolia, sepolia} from "viem/chains";
 import {configureChains, createConfig, WagmiConfig} from "wagmi";
 import {CoinbaseWalletConnector} from 'wagmi/connectors/coinbaseWallet';
 import {InjectedConnector} from 'wagmi/connectors/injected';
@@ -16,10 +16,10 @@ import {TopMenu, MainContent} from "layout";
 import CreateCampaign from "./components/campaigns/CreateCampaign";
 import Marketplace from "./components/marketplace/Marketplace";
 import Notifications from "./components/profile/Notifications";
-import Profile from "./components/profile/Profile";
 
 
 import "styles/App.css";
+import Campaigns from "components/campaigns/Campaigns";
 
 
 const styles = {
