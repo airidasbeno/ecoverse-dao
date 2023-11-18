@@ -2,7 +2,7 @@
     position: relative;
     overflow: hidden;
     padding-top: calc(4rem + 72px);
-    padding-bottom: 10rem;
+    padding-bottom: 8rem;
     background: linear-gradient(0deg, #167332 0%, #004517 100%) no-repeat scroll center center;
     background-size: cover;
 }
@@ -60,11 +60,4 @@
 
 .mastheadSubheading {
     font-size: 1.5rem;
-}
-
-@media (min-width: 992px) {
-    .masthead {
-        padding-top: calc(10rem + 55px);
-        padding-bottom: 10rem;
-    }
 }
