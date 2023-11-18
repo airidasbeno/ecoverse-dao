@@ -4,10 +4,10 @@ import {
     useInitWeb3InboxClient,
     useMessages
 } from '@web3inbox/widget-react'
-import React, {useCallback, useEffect} from 'react';
-import {useSignMessage, useAccount, useChainId} from 'wagmi';
-import {Table, Button, Card, Row, Col, Tag, Spin} from 'antd';
-import {useWeb3Modal} from '@web3modal/wagmi/react'
+import React, { useCallback, useEffect } from 'react';
+import { useSignMessage, useAccount, useChainId } from 'wagmi';
+import { Table, Button, Card, Row, Col, Tag, Spin } from 'antd';
+import { useWeb3Modal } from '@web3modal/wagmi/react'
 
 const styles = {
     button: {
@@ -39,13 +39,13 @@ const styles = {
 } as const;
 
 const Profile: React.FC = () => {
-    const {isSubscribed, isSubscribing, subscribe, isUnsubscribing, unsubscribe} = useManageSubscription();
-    const {address, isConnected, connector} = useAccount();
-    const {account, setAccount, isRegistered, isRegistering, register} = useW3iAccount();
+    const { isSubscribed, isSubscribing, subscribe, isUnsubscribing, unsubscribe } = useManageSubscription();
+    const { address, isConnected, connector } = useAccount();
+    const { account, setAccount, isRegistered, isRegistering, register } = useW3iAccount();
     const connectedChainId = useChainId();
-    const {signMessageAsync} = useSignMessage();
-    const {open} = useWeb3Modal();
-    const {messages} = useMessages();
+    const { signMessageAsync } = useSignMessage();
+    const { open } = useWeb3Modal();
+    const { messages } = useMessages();
 
     const projectId = process.env.REACT_APP_WALLETCONNECT_PROJECT_ID ?? '';
     useInitWeb3InboxClient({
@@ -60,7 +60,7 @@ const Profile: React.FC = () => {
         }
 
         try {
-            await register(message => signMessageAsync({message}))
+            await register(message => signMessageAsync({ message }))
         } catch (registerIdentityError) {
             alert(registerIdentityError)
         }
@@ -98,6 +98,12 @@ const Profile: React.FC = () => {
 
     const columns = [
         {
+            title: 'Icon',
+            dataIndex: ['message', 'icon'],
+            key: 'title',
+            render: (text: string) => <img src={text} alt="icon" style={{ width: '30px' }} />
+        },
+        {
             title: 'Title',
             dataIndex: ['message', 'title'],
             key: 'title'
@@ -119,7 +125,7 @@ const Profile: React.FC = () => {
             key: 'url',
             render: (text: string) => {
                 if (text[0] === "{") {
-                    const {contract, title} = JSON.parse(text);
+                    const { contract, title } = JSON.parse(text);
                     return (
                         <Button
                             shape="round"
@@ -148,7 +154,7 @@ const Profile: React.FC = () => {
             title: 'Network ID',
             dataIndex: 'id',
             key: 'id',
-            style: {background: '#4caf50'}
+            style: { background: '#4caf50' }
         },
     ];
     const getRowClassName = (record: { id: number }) => {
@@ -160,16 +166,16 @@ const Profile: React.FC = () => {
             <Row gutter={16}>
                 <Col span={8}>
                     <Card title="Profile"
-                          extra={
-                              <Tag color={isConnected ? '#004517' : 'red'} style={styles.statusTag}>
-                                  {isConnected ? 'Connected' : 'Not Connected'}
-                              </Tag>
-                          }>
+                        extra={
+                            <Tag color={isConnected ? '#004517' : 'red'} style={styles.statusTag}>
+                                {isConnected ? 'Connected' : 'Not Connected'}
+                            </Tag>
+                        }>
                         {isConnected && (
                             <>
-                                <p style={{marginTop: 0}}><strong>Wallet Address:</strong> {address}</p>
+                                <p style={{ marginTop: 0 }}><strong>Wallet Address:</strong> {address}</p>
                                 {isRegistered && (
-                                    <p style={{marginBottom: '30px'}}>
+                                    <p style={{ marginBottom: '30px' }}>
                                         <strong>Web3Inbox Account ID:</strong> {account}
                                     </p>
                                 )}
@@ -180,16 +186,16 @@ const Profile: React.FC = () => {
                                     rowKey="id"
                                     rowClassName={getRowClassName}
                                 />
-                                <div style={{textAlign: 'center', marginTop: '20px'}}>
+                                <div style={{ textAlign: 'center', marginTop: '20px' }}>
                                     <Button shape="round" size="small" type="primary"
-                                            style={styles.button} onClick={() => open({view: 'Networks'})}>
+                                        style={styles.button} onClick={() => open({ view: 'Networks' })}>
                                         Switch Network
                                     </Button>
                                 </div>
                             </>
                         )}
                         {!isConnected && (
-                            <div style={{textAlign: 'center'}}>
+                            <div style={{ textAlign: 'center' }}>
                                 <Button shape="round" type="primary" style={styles.button} onClick={() => open()}>
                                     Connect Wallet
                                 </Button>
@@ -198,23 +204,23 @@ const Profile: React.FC = () => {
                     </Card>
                 </Col>
                 <Col span={16}>
-                    <h2 style={{marginTop: 0}}>Web3Inbox Notifications</h2>
+                    <h2 style={{ marginTop: 0 }}>Web3Inbox Notifications</h2>
                     <p>Stay well-informed with timely voting reminders across various campaigns within our EcoVerse DAO.
                         Harness the power of WalletConnect and Web3Inbox Notifications to ensure that you never miss a
                         crucial moment in shaping our collective future.
                     </p>
                     {!account && (isConnected || isRegistered) ? (
-                        <Spin tip="Loading" size="large" style={{marginTop: '50px'}}>
-                            <div className="content"/>
+                        <Spin tip="Loading" size="large" style={{ marginTop: '50px' }}>
+                            <div className="content" />
                         </Spin>
                     ) : (
                         isConnected ? (
                             <>
                                 {!isRegistered ? (
-                                    <div style={{textAlign: "center", marginTop: '20px'}}>
+                                    <div style={{ textAlign: "center", marginTop: '20px' }}>
                                         <Button shape="round" size="small" type="primary"
-                                                style={styles.button} onClick={performRegistration}
-                                                disabled={isRegistering}>
+                                            style={styles.button} onClick={performRegistration}
+                                            disabled={isRegistering}>
                                             {isRegistering ? 'Signing...' : 'Sign to Receive Notifications'}
                                         </Button>
                                     </div>
@@ -222,10 +228,10 @@ const Profile: React.FC = () => {
                                     <>
                                         {!isSubscribed ? (
                                             <>
-                                                <div style={{textAlign: "center", marginTop: '20px'}}>
+                                                <div style={{ textAlign: "center", marginTop: '20px' }}>
                                                     <Button shape="round" size="small" type="primary"
-                                                            style={styles.button} onClick={performSubscribe}
-                                                            disabled={isSubscribing}>
+                                                        style={styles.button} onClick={performSubscribe}
+                                                        disabled={isSubscribing}>
                                                         {isSubscribing ? 'Subscribing...' : 'Subscribe to Notifications'}
                                                     </Button>
                                                 </div>
@@ -235,15 +241,15 @@ const Profile: React.FC = () => {
                                                 <Table
                                                     columns={columns}
                                                     pagination={false}
-                                                    scroll={{x: true}}
+                                                    scroll={{ x: true }}
                                                     size="small"
                                                     dataSource={messages}
-                                                    style={{marginTop: '10px'}}
-                                                    rowKey="id"/>
-                                                <div style={{textAlign: "center", marginTop: '20px'}}>
+                                                    style={{ marginTop: '10px' }}
+                                                    rowKey="id" />
+                                                <div style={{ textAlign: "center", marginTop: '20px' }}>
                                                     <Button shape="round" size="small" type="default"
-                                                            style={styles.whiteButton} onClick={performUnsubscribe}
-                                                            disabled={isUnsubscribing}>
+                                                        style={styles.whiteButton} onClick={performUnsubscribe}
+                                                        disabled={isUnsubscribing}>
                                                         {isUnsubscribing ? 'Unsubscribing...' : 'Unsubscribe'}
                                                     </Button>
                                                 </div>
@@ -253,7 +259,7 @@ const Profile: React.FC = () => {
                                 )}
                             </>
                         ) : (
-                            <div style={{textAlign: 'center'}}>
+                            <div style={{ textAlign: 'center' }}>
                                 <Button shape="round" type="primary" style={styles.button} onClick={() => open()}>
                                     Connect Wallet
                                 </Button>
