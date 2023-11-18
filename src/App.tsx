@@ -7,7 +7,7 @@ import Marketplace from "./components/marketplace/Marketplace";
 import Profile from "./components/profile/Profile";
 import CreateCampaign from "./components/campaigns/CreateCampaign";
 import {configureChains, createConfig, WagmiConfig} from "wagmi";
-import {mainnet, sepolia} from "viem/chains";
+import {mainnet, sepolia, goerli, scrollSepolia} from "viem/chains";
 import {EIP6963Connector, walletConnectProvider} from "@web3modal/wagmi";
 import {publicProvider} from 'wagmi/providers/public';
 import {CoinbaseWalletConnector} from 'wagmi/connectors/coinbaseWallet';
@@ -28,7 +28,7 @@ const styles = {
 const projectId = process.env.REACT_APP_WALLETCONNECT_PROJECT_ID ?? "";
 
 const {chains, publicClient} = configureChains(
-    [mainnet, sepolia],
+    [mainnet, scrollSepolia, sepolia, goerli],
     [walletConnectProvider({projectId}), publicProvider()]
 );
 
