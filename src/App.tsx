@@ -1,20 +1,27 @@
-import { Buffer } from "buffer";
-import { Layout, ConfigProvider, theme } from "antd";
-import { TopMenu, MainContent } from "layout";
-import "styles/App.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Marketplace from "./components/marketplace/Marketplace";
-import Campaigns from "./components/campaigns/Campaigns";
+import {Buffer} from "buffer";
+
+import {EIP6963Connector, walletConnectProvider} from "@web3modal/wagmi";
+import {createWeb3Modal} from '@web3modal/wagmi/react';
+import {Layout, ConfigProvider, theme} from "antd";
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import {goerli, mainnet, scrollSepolia, sepolia} from "viem/chains";
+import {configureChains, createConfig, WagmiConfig} from "wagmi";
+import {CoinbaseWalletConnector} from 'wagmi/connectors/coinbaseWallet';
+import {InjectedConnector} from 'wagmi/connectors/injected';
+import {WalletConnectConnector} from 'wagmi/connectors/walletConnect';
+import {publicProvider} from 'wagmi/providers/public';
+
+import {TopMenu, MainContent} from "layout";
+
 import CreateCampaign from "./components/campaigns/CreateCampaign";
-import { configureChains, createConfig, WagmiConfig } from "wagmi";
-import { mainnet, sepolia, goerli, scrollSepolia } from "viem/chains";
-import { EIP6963Connector, walletConnectProvider } from "@web3modal/wagmi";
-import { publicProvider } from 'wagmi/providers/public';
-import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
-import { InjectedConnector } from 'wagmi/connectors/injected';
-import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
-import { createWeb3Modal } from '@web3modal/wagmi/react';
+import Marketplace from "./components/marketplace/Marketplace";
 import Notifications from "./components/profile/Notifications";
+import AddToMarketplace from "./components/campaigns/AddToMarketplace";
+
+
+import "styles/App.css";
+import Campaigns from "components/campaigns/Campaigns";
+
 
 const styles = {
     layout: {
@@ -69,8 +76,9 @@ function App() {
                             <Routes>
                                 <Route path="/" element={<Marketplace />} />
                                 <Route path="/campaigns" element={<Campaigns />} />
+                                <Route path="/campaigns/create" element={<CreateCampaign />} />
+                                <Route path="/campaigns/add-to-marketplace" element={<AddToMarketplace />} />
                                 <Route path="/profile" element={<Notifications />} />
-                                <Route path="/create" element={<CreateCampaign />} />
                             </Routes>
                         </MainContent>
                     </Layout>

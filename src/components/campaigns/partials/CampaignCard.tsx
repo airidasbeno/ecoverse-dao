@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from 'antd';
-import ViewCampaign from "../../campaigns/ViewCampaign";
+import ViewCampaign from "./ViewCampaign";
+import { Link } from "react-router-dom";
 
 const styles = {
   card: {
@@ -18,17 +19,15 @@ const styles = {
   },
   button: {
     height: "40px",
-    padding: "0 20px",
+    padding: "0 15px",
     textAlign: "center",
     fontWeight: "600",
     letterSpacing: "0.2px",
-    fontSize: "15px",
-    margin: "10px 0",
+    fontSize: "14px",
+    margin: "4px 8px",
     border: "none",
   },
 } as const;
-
-
 
 const CampaignCard: React.FC = () => {
 
@@ -51,12 +50,14 @@ const CampaignCard: React.FC = () => {
           alt={'Campaign Title'}
           title={"Campaign Title"}
           style={styles.image} />
+        <Button shape="round" type="primary" style={styles.button}>
+          <Link to="/campaigns/add-to-marketplace">Add to Marketplace</Link>
+        </Button>
         <Button shape="round" type="primary" onClick={handleViewCampaignClick} style={styles.button}>
           View Campaign
         </Button>
         <ViewCampaign isVisible={isModalVisible} onClose={handleModalClose} />
       </div>
-
     </>
   );
 }

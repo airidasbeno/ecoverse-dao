@@ -130,6 +130,11 @@ const Notifications: React.FC = () => {
     );
     return (
         <>
+            <h1>My Profile</h1>
+            <p>Welcome to our unique shopping platform. Experience a whole new world of online shopping where quality
+                meets
+                convenience. Explore our vast range of products, savor exclusive discounts, and enjoy seamless browsing.
+                Your satisfaction is our promise!</p>
             {!isReady ? (
                 <div>Loading your profile...</div>
             ) : (

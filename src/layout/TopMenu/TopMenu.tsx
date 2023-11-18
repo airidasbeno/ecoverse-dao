@@ -52,12 +52,16 @@ const TopMenu: FC = () => {
                     <Menu.Item key="1" style={{ minWidth: '150px', textAlign: 'center' }}>
                         <Link to="/">Marketplace</Link>
                     </Menu.Item>
-                    <Menu.Item key="2" style={{ minWidth: '150px', textAlign: 'center' }}>
-                        <Link to="/campaigns">My Campaings</Link>
-                    </Menu.Item>
-                    <Menu.Item key="3" style={{ minWidth: '150px', textAlign: 'center' }}>
-                        <Link to="/profile">Profile</Link>
-                    </Menu.Item>
+                    {isConnected && (
+                        <Menu.Item key="2" style={{ minWidth: '150px', textAlign: 'center' }}>
+                            <Link to="/campaigns">My Campaings</Link>
+                        </Menu.Item>
+                    )}
+                    {isConnected && (
+                        <Menu.Item key="3" style={{ minWidth: '150px', textAlign: 'center' }}>
+                            <Link to="/profile">My Profile</Link>
+                        </Menu.Item>
+                    )}
                 </Menu>
                 {!isConnected && (
                     <Button shape="round" type="primary" style={styles.button} onClick={() => open()}>
@@ -71,7 +75,7 @@ const TopMenu: FC = () => {
                 )}
                 {isConnected && (
                     <Button shape="round" type="primary" style={styles.button}>
-                        <Link to="/create">Create Campaign</Link>
+                        <Link to="/campaigns/create">Create Campaign</Link>
                     </Button>
                 )}
             </div>

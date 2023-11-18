@@ -30,6 +30,19 @@ body {
     transition: all 0.3s ease;
 }
 
+.ant-steps-item-title::after {
+    background-color: #004517 !important;
+}
+
+.ant-steps-finish-icon {
+    color: #004517;
+}
+
+.ant-steps-item-finish .ant-steps-item-icon {
+    background-color: #d6edde !important;
+    border-color: #d6edde !important;
+}
+
 .selected-row {
     background-color: #b7eb8f;
 }
@@ -105,6 +118,6 @@ body {
     color: #004517 !important;
 }
 
-.table-row-selected {
-    background-color: #d6edde !important;
+.ant-input:focus, .ant-input:hover {
+    border-color: #004517 !important;
 }
