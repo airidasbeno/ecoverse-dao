@@ -26,7 +26,6 @@ const styles = {
     connectedRow: {
         background: '#4caf50',
     },
-
 } as const;
 
 const Notifications: React.FC = () => {

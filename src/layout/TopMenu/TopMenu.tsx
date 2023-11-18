@@ -46,11 +46,11 @@ const TopMenu: FC = () => {
 
     return (
         <Header style={{ ...styles.header, padding: isMobile ? "0 5px 0 5px" : "0 20px" }}>
-            <h2>ETHGlobal Hackathon</h2>
+            <h2><Link to="/">ETHGlobal Hackathon </Link></h2>
             <div style={styles.headerRight}>
                 <Menu style={styles.headerRight}>
                     <Menu.Item key="1" style={{ minWidth: '150px', textAlign: 'center' }}>
-                        <Link to="/">Marketplace</Link>
+                        <Link to="/marketplace">Marketplace</Link>
                     </Menu.Item>
                     {isConnected && (
                         <Menu.Item key="2" style={{ minWidth: '150px', textAlign: 'center' }}>

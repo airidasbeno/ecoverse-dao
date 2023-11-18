@@ -20,6 +20,7 @@ import AddToMarketplace from "./components/campaigns/AddToMarketplace";
 
 import "styles/App.css";
 import Campaigns from "components/campaigns/Campaigns";
+import Homepage from "./components/Homepage";
 
 const styles = {
     layout: {
@@ -72,7 +73,8 @@ function App() {
                         <TopMenu />
                         <MainContent>
                             <Routes>
-                                <Route path="/" element={<Marketplace />} />
+                                <Route path="/" element={<Homepage />} />
+                                <Route path="/marketplace" element={<Marketplace />} />
                                 <Route path="/campaigns" element={<Campaigns />} />
                                 <Route path="/campaigns/create" element={<CreateCampaign />} />
                                 <Route path="/campaigns/add-to-marketplace" element={<AddToMarketplace />} />
