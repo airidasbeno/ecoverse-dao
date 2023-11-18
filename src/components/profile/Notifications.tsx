@@ -7,6 +7,77 @@ import {
 } from '@web3inbox/widget-react'
 import React, { useCallback, useEffect } from 'react';
 import { useSignMessage, useAccount } from 'wagmi';
+import { Table } from 'antd';
+
+// const messages = [
+//     {
+//         id: 1700292763470,
+//         topic: "0d9d529b5895dba78955a39d4317d518661db72f74332b348b3e840636947051",
+//         message: {
+//             id: "10fe466f-c2c8-4e50-9a17-ad4df8779a11",
+//             type: "7c18bf6a-62f2-4443-b911-4647f6966b8a",
+//             title: "2123",
+//             body: "123123",
+//             icon: "https://imagedelivery.net/_aTEfDRm7z3tKgu9JhfeKA/null/md",
+//             url: "https://cloud.walletconnect.com/app/notify"
+//         },
+//         publishedAt: 1700292763000
+//     }
+// ];
+
+const { messages } = useMessages()
+
+
+const columns = [
+    {
+        title: 'ID',
+        dataIndex: 'id',
+        key: 'id'
+    },
+    {
+        title: 'Topic',
+        dataIndex: 'topic',
+        key: 'topic'
+    },
+    {
+        title: 'Message ID',
+        dataIndex: ['message', 'id'],
+        key: 'messageId'
+    },
+    {
+        title: 'Type',
+        dataIndex: ['message', 'type'],
+        key: 'type'
+    },
+    {
+        title: 'Title',
+        dataIndex: ['message', 'title'],
+        key: 'title'
+    },
+    {
+        title: 'Body',
+        dataIndex: ['message', 'body'],
+        key: 'body'
+    },
+    {
+        title: 'Icon',
+        dataIndex: ['message', 'icon'],
+        key: 'icon',
+        render: (text: string) => <img src={text} alt="Icon" style={{ width: '24px', height: '24px' }} />
+    },
+    {
+        title: 'URL',
+        dataIndex: ['message', 'url'],
+        key: 'url',
+        render: (text: string) => <a href={text}>{text}</a>
+    },
+    {
+        title: 'Published At',
+        dataIndex: 'publishedAt',
+        key: 'publishedAt',
+        render: (text: number) => new Date(text).toLocaleString()
+    }
+];
 
 const Notifications: React.FC = () => {
     const { address } = useAccount();
@@ -56,7 +127,6 @@ const Notifications: React.FC = () => {
     }, [subscribe, isRegistered])
 
     const { subscription } = useSubscription()
-    const { messages } = useMessages()
 
     return (
         <>
@@ -79,7 +149,7 @@ const Notifications: React.FC = () => {
                                 </div>
                             ) : (
                                 <>
-                                    {!isSubscribed ? (
+                                    {isSubscribed ? (
                                         <>
                                             <button onClick={performSubscribe} disabled={isSubscribing}>
                                                 {isSubscribing ? 'Subscribing...' : 'Subscribe to notifications'}
@@ -89,7 +159,7 @@ const Notifications: React.FC = () => {
                                         <>
                                             <div>You are subscribed</div>
                                             <div>Subscription: {JSON.stringify(subscription)}</div>
-                                            <div>Messages: {JSON.stringify(messages)}</div>
+                                            <Table columns={columns} dataSource={messages} rowKey="id" />
                                         </>
                                     )}
                                 </>

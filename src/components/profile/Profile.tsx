@@ -7,6 +7,7 @@ const Profile: React.FC = () => {
     const { address, isConnected, connector } = useAccount();
     const connectedChainId = useChainId();
 
+
     return (
         <>
             <h1>Profile</h1>
