@@ -2,19 +2,17 @@ import { ethers } from 'ethers';
 
 import contractAbi from '../assets/abis/dao.json';
 
-export const contractAddreses: { [key: number]: string } = {
+export const contractAddresses: { [key: number]: string } = {
     5: "0x378545248b063e592383e83426B1e4860DFad152",
     534351: "0xFEB5B03A501f808b6E2ed717421012A7549098f5",
     59140: "0xd979b5BC810e17705706FE66401A9f5759092148"
 };
 
-
 export const useDAO = async () => {
-
     const provider = new ethers.providers.Web3Provider(window.ethereum as unknown as ethers.providers.ExternalProvider);
     const signer: ethers.Signer | ethers.providers.Provider | undefined = provider.getSigner();
     const network = await provider.getNetwork();
-    const currentAddress = contractAddreses[network.chainId];
+    const currentAddress = contractAddresses[network.chainId];
     const contract = new ethers.Contract(currentAddress, contractAbi, signer);
 
     const createCampaign = async (duration: number, votingPeriod: number) => {
@@ -49,8 +47,7 @@ export const useDAO = async () => {
 
     const getWinningContract = async (campaignId: number) => {
         try {
-            const winningContract = await contract.getWinningContract(campaignId);
-            return winningContract;
+            return await contract.getWinningContract(campaignId);
         } catch (error) {
             console.error('Error fetching winning contract:', error);
         }
