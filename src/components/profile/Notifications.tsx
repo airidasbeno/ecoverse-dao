@@ -59,6 +59,9 @@ const Notifications: React.FC = () => {
 
     const { subscription } = useSubscription()
     const { messages } = useMessages()
+    console.log(messages)
+
+    // const messages = [{ "id": 1700292763470, "topic": "0d9d529b5895dba78955a39d4317d518661db72f74332b348b3e840636947051", "message": { "id": "10fe466f-c2c8-4e50-9a17-ad4df8779a11", "type": "7c18bf6a-62f2-4443-b911-4647f6966b8a", "title": "2123", "body": "123123", "icon": "https://imagedelivery.net/_aTEfDRm7z3tKgu9JhfeKA/null/md", "url": "https://cloud.walletconnect.com/app/notify" }, "publishedAt": 1700292763000 }]
 
     const columns = [
         {
@@ -143,7 +146,13 @@ const Notifications: React.FC = () => {
                                             <div>You are subscribed</div>
                                             <div>Subscription: {JSON.stringify(subscription)}</div>
                                             {messages.length === 0 ? <div>No messages</div> :
-                                                <Table columns={columns} dataSource={messages} rowKey="id" />
+                                                <Table
+                                                    columns={columns}
+                                                    pagination={false}
+                                                    scroll={{ x: true }}
+                                                    size="small"
+                                                    dataSource={messages}
+                                                    rowKey="id" />
                                             }
                                         </>
                                     )}
