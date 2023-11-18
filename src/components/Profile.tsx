@@ -47,6 +47,12 @@ const Profile: React.FC = () => {
     const { open } = useWeb3Modal();
     const { messages } = useMessages();
 
+    let connectedChain;
+
+    if (connector?.chains) {
+        connectedChain = connector.chains.find(chain => chain.id === connectedChainId);
+    }
+
     const projectId = process.env.REACT_APP_WALLETCONNECT_PROJECT_ID ?? '';
     useInitWeb3InboxClient({
         projectId,
@@ -174,6 +180,9 @@ const Profile: React.FC = () => {
                         {isConnected && (
                             <>
                                 <p style={{ marginTop: 0 }}><strong>Wallet Address:</strong> {address}</p>
+                                <p><strong>Network:</strong> {connectedChain?.name} - {connectedChain?.id}</p>
+                                <p><strong>Native Symbol:</strong> {connectedChain?.nativeCurrency.symbol} ({connectedChain?.nativeCurrency.decimals} decimals)</p>
+
                                 {isRegistered && (
                                     <p style={{ marginBottom: '30px' }}>
                                         <strong>Web3Inbox Account ID:</strong> {account}

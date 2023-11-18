@@ -1,6 +1,7 @@
 import React from 'react';
 import {Button, Card, Col, Form, InputNumber, message, Row} from 'antd';
 import ProgressSteps from "./ProgressSteps";
+import {useAccount, useChainId} from "wagmi";
 
 const styles = {
     button: {
@@ -21,6 +22,14 @@ type FieldType = {
 
 const SubmitCampaign: React.FC = () => {
     const [messageApi, contextHolder] = message.useMessage();
+
+    const { connector } = useAccount();
+    const connectedChainId = useChainId();
+    let connectedChain;
+
+    if (connector?.chains) {
+        connectedChain = connector.chains.find(chain => chain.id === connectedChainId);
+    }
 
     const onFinish = () => {
         messageApi.open({
@@ -56,7 +65,7 @@ const SubmitCampaign: React.FC = () => {
                                 name="budget"
                                 rules={[{required: true, message: 'Input project budget'}]}
                             >
-                                <InputNumber prefix="$" style={{width: '100%'}}/>
+                                <InputNumber prefix={connectedChain?.nativeCurrency.symbol} style={{width: '100%'}}/>
                             </Form.Item>
 
                             <Form.Item wrapperCol={{ offset: 10, span: 12 }} style={{ marginTop: '40px' }}>
