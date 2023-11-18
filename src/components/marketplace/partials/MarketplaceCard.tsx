@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Button } from 'antd';
+import {Button} from 'antd';
 import ViewCampaign from "../../campaigns/partials/ViewCampaign";
 import Countdown from "./Countdown";
+import {useAccount} from "wagmi";
+import {useWeb3Modal} from '@web3modal/wagmi/react';
 
 const styles = {
     card: {
@@ -31,6 +33,8 @@ const styles = {
 
 const MarketplaceCard: React.FC = () => {
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const {isConnected} = useAccount();
+    const {open} = useWeb3Modal();
 
     const handleViewCampaignClick = () => {
         setIsModalVisible(true);
@@ -39,6 +43,7 @@ const MarketplaceCard: React.FC = () => {
     const handleModalClose = () => {
         setIsModalVisible(false);
     };
+
 
     return (
         <>
@@ -50,12 +55,20 @@ const MarketplaceCard: React.FC = () => {
                     title={"Campaign Title"}
                     style={styles.image} />
                 <Countdown />
-                <Button shape="round" type="default" onClick={handleViewCampaignClick} style={styles.button}>
-                    More Details
-                </Button>
-                <Button shape="round" type="primary" onClick={handleViewCampaignClick} style={styles.button}>
-                    Vote
-                </Button>
+                {isConnected ? (
+                    <div>
+                        <Button shape="round" type="default" onClick={handleViewCampaignClick} style={styles.button}>
+                            More Details
+                        </Button>
+                        <Button shape="round" type="primary" onClick={handleViewCampaignClick} style={styles.button}>
+                            Vote
+                        </Button>
+                    </div>
+                ) : (
+                    <Button shape="round" type="primary" style={styles.button} onClick={() => open()}>
+                        Connect to Vote
+                    </Button>
+                )}
                 <ViewCampaign isVisible={isModalVisible} onClose={handleModalClose} />
             </div>
         </>
