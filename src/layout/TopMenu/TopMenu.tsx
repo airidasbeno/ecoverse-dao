@@ -1,11 +1,11 @@
-import {FC} from "react";
-import {Button, Layout, Menu} from "antd";
-import {useWindowWidthAndHeight} from "hooks";
-import {Link} from "react-router-dom";
-import {useWeb3Modal} from '@web3modal/wagmi/react'
-import {useAccount} from "wagmi";
+import { FC } from "react";
+import { Button, Layout, Menu } from "antd";
+import { useWindowWidthAndHeight } from "hooks";
+import { Link } from "react-router-dom";
+import { useWeb3Modal } from '@web3modal/wagmi/react'
+import { useAccount } from "wagmi";
 
-const {Header} = Layout;
+const { Header } = Layout;
 
 const styles = {
     header: {
@@ -40,23 +40,23 @@ const styles = {
 } as const;
 
 const TopMenu: FC = () => {
-    const {isMobile} = useWindowWidthAndHeight();
-    const {open} = useWeb3Modal();
+    const { isMobile } = useWindowWidthAndHeight();
+    const { open } = useWeb3Modal();
     const { isConnected } = useAccount();
 
     return (
-        <Header style={{...styles.header, padding: isMobile ? "0 5px 0 5px" : "0 20px"}}>
+        <Header style={{ ...styles.header, padding: isMobile ? "0 5px 0 5px" : "0 20px" }}>
             <h2>ETHGlobal Hackathon</h2>
             <div style={styles.headerRight}>
                 <Menu style={styles.headerRight}>
-                    <Menu.Item key="1" style={{minWidth: '150px', textAlign: 'center'}}>
+                    <Menu.Item key="1" style={{ minWidth: '150px', textAlign: 'center' }}>
                         <Link to="/">Marketplace</Link>
                     </Menu.Item>
-                    <Menu.Item key="2" style={{minWidth: '150px', textAlign: 'center'}}>
-                        <Link to="/profile">Profile</Link>
+                    <Menu.Item key="2" style={{ minWidth: '150px', textAlign: 'center' }}>
+                        <Link to="/campaigns">My Campaings</Link>
                     </Menu.Item>
-                    <Menu.Item key="3" style={{minWidth: '150px', textAlign: 'center'}}>
-                        <Link to="/notifications">Notifications</Link>
+                    <Menu.Item key="3" style={{ minWidth: '150px', textAlign: 'center' }}>
+                        <Link to="/profile">Profile</Link>
                     </Menu.Item>
                 </Menu>
                 {!isConnected && (
@@ -65,7 +65,7 @@ const TopMenu: FC = () => {
                     </Button>
                 )}
                 {isConnected && (
-                    <Button shape="round" type="primary" style={styles.button} onClick={() => open({view: 'Account'})}>
+                    <Button shape="round" type="primary" style={styles.button} onClick={() => open({ view: 'Account' })}>
                         Connected Wallet
                     </Button>
                 )}

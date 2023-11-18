@@ -5,7 +5,7 @@ import {
     useMessages
 } from '@web3inbox/widget-react'
 import React, { useCallback, useEffect } from 'react';
-import { useSignMessage, useAccount } from 'wagmi';
+import { useSignMessage, useAccount, useChainId } from 'wagmi';
 import { Table, Button } from 'antd';
 
 const styles = {
@@ -22,7 +22,8 @@ const styles = {
 } as const;
 
 const Notifications: React.FC = () => {
-    const { address } = useAccount();
+    const { address, isConnected, connector } = useAccount();
+    const connectedChainId = useChainId();
     const { signMessageAsync } = useSignMessage();
 
     const projectId = process.env.REACT_APP_WALLETCONNECT_PROJECT_ID ?? '';
@@ -104,19 +105,32 @@ const Notifications: React.FC = () => {
     return (
         <>
             {!isReady ? (
-                <div>Loading your notifications...</div>
+                <div>Loading your profile...</div>
             ) : (
                 <>
                     {!address ? (
-                        <div>Connect your wallet to view your notifications</div>
+                        <div>Connect your wallet to view your profile</div>
                     ) : (
                         <>
+                            <h1>Profile</h1>
+                            <p>Welcome to our unique shopping platform. Experience a whole new world of online shopping where quality meets
+                                convenience. Explore our vast range of products, savor exclusive discounts, and enjoy seamless browsing.
+                                Your satisfaction is our promise!</p>
+                            <p>Status: {isConnected ? 'Connected' : 'Not Connected'}</p>
+                            <p>Address: {address}</p>
+
+                            {connector?.chains.map((chain, index) => (
+                                <p key={index}>
+                                    <strong>{connectedChainId === chain.id ? 'Current - ' : ''}</strong>
+                                    Blockchain: {chain.name} ({chain.id})
+                                </p>
+                            ))}
                             <div>Address: {address}</div>
                             <div>Account ID: {account}</div>
                             <br />
                             {!isRegistered ? (
                                 <div>
-                                    To manage notifications, sign and register an identity key:&nbsp;
+                                    To manage profile, sign and register an identity key:&nbsp;
                                     <button onClick={performRegistration} disabled={isRegistering}>
                                         {isRegistering ? 'Signing...' : 'Sign'}
                                     </button>
