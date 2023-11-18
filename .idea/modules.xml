@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/hachaton.iml" filepath="$PROJECT_DIR$/.idea/hachaton.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ecoverse-dao.iml" filepath="$PROJECT_DIR$/.idea/ecoverse-dao.iml" />
     </modules>
   </component>
 </project>
