@@ -177,7 +177,7 @@ const Notifications: React.FC = () => {
                                                 {isUnsubscribing ? 'Unsubscribing...' : 'Unsubscribe'}
                                             </button>
                                             <div>Subscription: {JSON.stringify(subscription)}</div>
-                                            {messages.length === 0 ? <div>No messages</div> :
+                                            {
                                                 <Table
                                                     columns={columns}
                                                     pagination={false}
