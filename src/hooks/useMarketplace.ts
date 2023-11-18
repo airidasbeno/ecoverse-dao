@@ -1,17 +1,17 @@
-import { useState } from 'react';
+import { useState} from 'react';
 
 import { ethers } from 'ethers';
 
 import { contractAddreses } from './useMint';
+
 import contractAbi from '../assets/abis/marketplace.json';
 
-interface Listing {
+export interface Listing {
     seller: string;
     tokenAddress: string;
     tokenId: string;
     price: number;
 }
-
 
 export const useNFTMarketplace = async () => {
     const [listings, setListings] = useState<Listing[]>([]);
@@ -20,6 +20,10 @@ export const useNFTMarketplace = async () => {
     const network = await provider.getNetwork();
     const currentAddress = contractAddreses[network.chainId];
     const contract = new ethers.Contract(currentAddress, contractAbi, signer);
+
+    // useEffect(async () => {
+    //     await fetchAllListings()
+    // }, []);
 
     const listNFT = async (tokenAddress: string, tokenId: number, price: number) => {
         try {
