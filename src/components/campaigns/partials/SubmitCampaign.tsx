@@ -9,6 +9,8 @@ import useNFTMarketplace from 'hooks/useMarketplace';
 
 import ProgressSteps from "./ProgressSteps";
 
+import feesExplanation from "assets/images/fees-explanation.jpg";
+
 const styles = {
     button: {
         height: "40px",
@@ -111,6 +113,9 @@ const SubmitCampaign: React.FC = () => {
                                         onFinishFailed={onFinishFailed}
                                         autoComplete="off"
                                     >
+                                        <div style={{textAlign: 'center'}}>
+                                            <img src={feesExplanation} width={'50%'}/>
+                                        </div>
                                         <Form.Item<FieldType>
                                             label="Project Budget"
                                             name="budget"
