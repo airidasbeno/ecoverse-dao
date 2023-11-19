@@ -43,6 +43,6 @@ const Campaigns: React.FC = () => {
                 </div>
             )}
         </>
-);
+    );
 };
 export default Campaigns;
