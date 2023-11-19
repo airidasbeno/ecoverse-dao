@@ -14,7 +14,7 @@ const ViewCampaign: React.FC<ViewCampaignProps> = ({isVisible, onClose}) => {
                 visible={isVisible}
                 onOk={onClose}
                 onCancel={onClose}
-                okText={'VOTE'}
+                okText={'Purchase'}
                 width={600}
             >
                 <Card>

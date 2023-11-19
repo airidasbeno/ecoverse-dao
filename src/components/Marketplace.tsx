@@ -18,18 +18,11 @@ const Marketplace: React.FC = () => {
     return (
         <>
             <h1>Marketplace</h1>
-            <p>
-                Welcome to our unique shopping platform. Experience a whole new world of online shopping where quality
-                meets convenience. Explore our vast range of products, savor exclusive discounts, and enjoy seamless
-                browsing. Your satisfaction is our promise!
+            <p style={{ maxWidth: '800px' }}>
+                Explore Our DAO Campaigns Marketplace: Welcome to a Hub of Opportunity. Dive into Campaigns, Delve into
+                Details, Purchase Unique NFTs, and Cast Your Vote to Shape the Course of Future Initiatives.
             </p>
             <Row gutter={16}>
-                <Col span={8}>
-                    <MarketplaceCard/>
-                </Col>
-                <Col span={8}>
-                    <MarketplaceCard/>
-                </Col>
                 <Col span={8}>
                     <MarketplaceCard/>
                 </Col>
