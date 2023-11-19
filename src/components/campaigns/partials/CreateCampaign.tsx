@@ -60,8 +60,6 @@ const CreateCampaign: React.FC = () => {
     const [messageApi, contextHolder] = message.useMessage();
     const [minting, setMinting] = useState(false);
     const navigate = useNavigate();
-
-
     const {isConnected} = useAccount();
     const { open } = useWeb3Modal();
 
