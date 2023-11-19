@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {Button, Card} from 'antd';
 import ViewCampaign from "../campaigns/partials/ViewCampaign";
 import Countdown from "./Countdown";
-import { useAccount } from "wagmi";
-import { useWeb3Modal } from '@web3modal/wagmi/react';
+import {useAccount} from "wagmi";
+import {useWeb3Modal} from '@web3modal/wagmi/react';
 
 const styles = {
     card: {
@@ -30,7 +30,7 @@ const styles = {
 const MarketplaceCard: React.FC = () => {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const {isConnected} = useAccount();
-    const { open } = useWeb3Modal();
+    const {open} = useWeb3Modal();
 
     const handleViewCampaignClick = () => {
         setIsModalVisible(true);
@@ -42,24 +42,27 @@ const MarketplaceCard: React.FC = () => {
 
     return (
         <>
-            <Card title="Campaign Title" bordered={true} style={styles.card}>
-                <p style={{ marginTop: 0, textAlign: 'center' }}>Campaign short description, Campaign short description...</p>
-                <img src={'https://random.imagecdn.app/200/150'}
-                     alt={'Campaign Title'}
-                     title={"Campaign Title"}
-                     style={styles.image}/>
+            <Card title="Rainbow Eater Badge" bordered={true} style={styles.card}>
+                <p style={{marginTop: 0, textAlign: 'center'}}>Earned by eating at least 5 different colored fruits and
+                    vegetables for 5 consecutive days.</p>
+                <img
+                    src={'https://gateway.pinata.cloud/ipfs/QmWuhN98BQaPQ7XXed9GzMZuvTsyithNAgYVcKFBNgazsi/50b6ad6a-83f2-43a8-8df9-b39ea6aa83d6.png?fbclid=IwAR1T_xxPFHkuh0Km0YGFwGmpvKtey8LFDrWFR2OI0filBz2LYccB6wwgh7g'}
+                    alt={'Rainbow Eater Badge'}
+                    title={"Rainbow Eater Badge"}
+                    style={styles.image}/>
                 <Countdown/>
                 {isConnected ? (
-                    <div style={{ textAlign: 'center', marginTop: '15px' }}>
+                    <div style={{textAlign: 'center', marginTop: '15px'}}>
+                        <h2 style={{ marginBottom: 0 }}>Price: 1 SEP</h2>
                         <Button shape="round" type="default" onClick={handleViewCampaignClick} style={styles.button}>
                             More Details
                         </Button>
                         <Button shape="round" type="primary" onClick={handleViewCampaignClick} style={styles.button}>
-                            Vote
+                            Purchase
                         </Button>
                     </div>
                 ) : (
-                    <div style={{ textAlign: 'center', marginTop: '15px' }}>
+                    <div style={{textAlign: 'center', marginTop: '15px'}}>
                         <Button shape="round" type="primary" style={styles.button} onClick={() => open()}>
                             Connect to Vote
                         </Button>

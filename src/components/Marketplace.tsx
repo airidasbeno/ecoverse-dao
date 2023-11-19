@@ -26,12 +26,6 @@ const Marketplace: React.FC = () => {
                 <Col span={8}>
                     <MarketplaceCard/>
                 </Col>
-                <Col span={8}>
-                    <MarketplaceCard/>
-                </Col>
-                <Col span={8}>
-                    <MarketplaceCard/>
-                </Col>
             </Row>
         </>
     );
