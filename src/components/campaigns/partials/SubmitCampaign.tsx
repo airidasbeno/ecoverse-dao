@@ -1,6 +1,12 @@
 import React from 'react';
+
 import {Button, Card, Col, Form, InputNumber, message, Row} from 'antd';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+
+import useNFTMarketplace from 'hooks/useMarketplace';
+
 import ProgressSteps from "./ProgressSteps";
+
 
 const styles = {
     button: {
@@ -21,12 +27,27 @@ type FieldType = {
 
 const SubmitCampaign: React.FC = () => {
     const [messageApi, contextHolder] = message.useMessage();
+    const [searchParams] = useSearchParams();
+    const { listNFT } = useNFTMarketplace();
+    const navigate = useNavigate();
 
-    const onFinish = () => {
+    const onFinish = async (values: any) => {
+        const id = searchParams.get('id') || 1;
+        const contractAddress = searchParams.get('contract') || "";
+        try {
+            const result = await listNFT(contractAddress, Number(id), 1, values.budget);
+            console.log(result);
         messageApi.open({
             type: 'success',
             content: 'Campaign was submitted to marketplace successfully.',
         });
+        navigate(`/marketplace`);
+    } catch (error) {
+        messageApi.open({
+            type: 'error',
+            content: 'Error occurred, check inputs.',
+        });
+    };
     };
 
     const onFinishFailed = () => {

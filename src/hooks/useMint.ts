@@ -5,7 +5,8 @@ import contractAbi from '../assets/abis/mint.json';
 export const contractAddresses: { [key: number]: string } = {
     5: "0xd9145CCE52D386f254917e481eB44e9943F39138",
     534351: "0x61BEcD8eBD72fE73De9B8Be4368EeF7f78c77053",
-    59140: "0x61BEcD8eBD72fE73De9B8Be4368EeF7f78c77053"
+    59140: "0x61BEcD8eBD72fE73De9B8Be4368EeF7f78c77053",
+    11155111: "0xB16d8FBFaB7439C562A37378fbF276183D304B28",
 };
 
 
@@ -23,7 +24,7 @@ export const contractAddresses: { [key: number]: string } = {
             const tokenId = extractTokenIdFromReceipt(receipt);
 
             console.log('Minting successful', mintTx.hash, tokenId);
-            return { success: true, hash: mintTx.hash, tokenId: tokenId };
+            return { success: true, hash: mintTx.hash, tokenId: tokenId, contract: contractAddresses[network.chainId] };
         } catch (error) {
             console.error('Error minting token:', error);
             return { success: false, hash: null };
@@ -31,6 +32,7 @@ export const contractAddresses: { [key: number]: string } = {
     };
 
     const extractTokenIdFromReceipt = (receipt: { events: any; }) => {
+        console.log("Receipt: ", receipt);
         for (const event of receipt.events) {
             console.log("Event: ", event);
             if (event.event === 'TransferSingle' && event.args.length > 0) {

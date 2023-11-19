@@ -5,6 +5,7 @@ import { RangePickerProps } from "antd/es/date-picker";
 import TextArea from "antd/es/input/TextArea";
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
+import { useNavigate } from 'react-router-dom';
 
 import mintUniqueToken from 'hooks/useMint';
 
@@ -56,6 +57,9 @@ type FieldType = {
 const CreateCampaign: React.FC = () => {
     const [messageApi, contextHolder] = message.useMessage();
     const [minting, setMinting] = useState(false);
+    const navigate = useNavigate();
+
+
 
     const onFinish = async (values: FieldType) => {
         try {
@@ -76,6 +80,11 @@ const CreateCampaign: React.FC = () => {
                     content: 'Campaign was created successfully.',
                 });
             }
+            messageApi.open({
+                type: 'success',
+                content: 'Campaign was created successfully.',
+            });
+            navigate(`/campaigns/submit?id=${result.tokenId}&contract=${result.contract}`);
         } catch (error: any) {
             messageApi.open({
                 type: 'error',
