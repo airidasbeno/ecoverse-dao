@@ -53,7 +53,7 @@ const MarketplaceCard: React.FC = () => {
                 <Countdown/>
                 {isConnected ? (
                     <div style={{textAlign: 'center', marginTop: '15px'}}>
-                        <h2 style={{ marginBottom: 0 }}>Price: 1 SEP</h2>
+                        <h2 style={{ marginBottom: 0 }}>Price: 1.25 SEP</h2>
                         <Button shape="round" type="default" onClick={handleViewCampaignClick} style={styles.button}>
                             More Details
                         </Button>

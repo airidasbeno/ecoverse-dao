@@ -13,8 +13,6 @@ import mintUniqueToken from 'hooks/useMint';
 
 import ProgressSteps from "./ProgressSteps";
 
-
-
 const styles = {
     button: {
         height: "40px",
