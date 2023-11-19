@@ -10,8 +10,8 @@ const HeroSection: React.FC = () => {
                 <div className={styles.mastheadContent}>
                     <h1 className={styles.mastheadHeading}>EcoVerse DAO</h1>
                     <p className={styles.mastheadSubheading}>
-                        Empowering Earth and Facilitating Transformation: Fostering Positive Change
-                        through<br/> Empowerment and Sustainable Practices</p>
+                        Empowering Earth and Enabling Change through NFTs. <br/>Influence conservation projects'
+                        direction via DAO voting participation.</p>
                     <Button shape="round" type="default" className={styles.mastheadButton}>
                         <Link to="/marketplace">Check Marketplace</Link>
                     </Button>
