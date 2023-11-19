@@ -34,12 +34,6 @@ const Campaigns: React.FC = () => {
                     <Col span={8}>
                         <CampaignCard/>
                     </Col>
-                    <Col span={8}>
-                        <CampaignCard/>
-                    </Col>
-                    <Col span={8}>
-                        <CampaignCard/>
-                    </Col>
                 </Row>
             ) : (
                 <div style={{textAlign: 'left'}}>

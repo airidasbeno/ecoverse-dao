@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
-import {Button, Card} from 'antd';
-import {Link} from "react-router-dom";
-import ViewCampaign from "./ViewCampaign";
+import React from 'react';
+import { Card } from 'antd';
 
 const styles = {
     card: {
@@ -26,36 +24,18 @@ const styles = {
 } as const;
 
 const CampaignCard: React.FC = () => {
-    const [isModalVisible, setIsModalVisible] = useState(false);
-
-    const handleViewCampaignClick = () => {
-        setIsModalVisible(true);
-    };
-
-    const handleModalClose = () => {
-        setIsModalVisible(false);
-    };
-
     return (
         <>
-            <Card title="Campaign Title" bordered={true} style={styles.card}>
-                <p style={{marginTop: 0, textAlign: 'center'}}>Campaign short description, Campaign short
-                    description...</p>
-                <img src={'https://random.imagecdn.app/200/150'}
-                     alt={'Campaign Title'}
-                     title={"Campaign Title"}
-                     style={styles.image}/>
-                <div style={{textAlign: 'center', marginTop: '15px'}}>
-                    <Button shape="round" type="default" onClick={handleViewCampaignClick} style={styles.button}>
-                        More Details
-                    </Button>
-                    <Button shape="round" type="primary" style={styles.button}>
-                        <Link to="/campaigns/submit">Submit</Link>
-                    </Button>
-                </div>
-                <ViewCampaign isVisible={isModalVisible} onClose={handleModalClose}/>
+            <Card title="Rainbow Eater Badge" bordered={true} style={styles.card}>
+                <p style={{marginTop: 0, textAlign: 'center'}}>Earned by eating at least 5 different colored fruits and
+                    vegetables for 5 consecutive days.</p>
+                <img
+                    src={'https://gateway.pinata.cloud/ipfs/QmWuhN98BQaPQ7XXed9GzMZuvTsyithNAgYVcKFBNgazsi/50b6ad6a-83f2-43a8-8df9-b39ea6aa83d6.png?fbclid=IwAR1T_xxPFHkuh0Km0YGFwGmpvKtey8LFDrWFR2OI0filBz2LYccB6wwgh7g'}
+                    alt={'Rainbow Eater Badge'}
+                    title={'Rainbow Eater Badge'}
+                    style={styles.image} />
             </Card>
         </>
-);
+    );
 }
 export default CampaignCard;
