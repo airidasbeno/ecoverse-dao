@@ -1,8 +1,8 @@
 import React from 'react';
 import {Button, Col, Row} from 'antd';
 import CampaignCard from "./campaigns/partials/CampaignCard";
-import { useAccount } from "wagmi";
-import { useWeb3Modal } from '@web3modal/wagmi/react';
+import {useAccount} from "wagmi";
+import {useWeb3Modal} from '@web3modal/wagmi/react';
 
 const styles = {
     button: {
@@ -25,9 +25,10 @@ const Campaigns: React.FC = () => {
     return (
         <>
             <h1>My Campaigns</h1>
-            <p>Welcome to our unique shopping platform. Experience a whole new world of online shopping where quality
-                meets convenience. Explore our vast range of products, savor exclusive discounts, and enjoy seamless
-                browsing. Your satisfaction is our promise!</p>
+            <p style={{maxWidth: '800px'}}>
+                Discover, Create, and Share: Navigate Your Personal DAO Campaigns Marketplace. Browse, Craft, and
+                Showcase Your Initiatives. Submit and Witness Your Unique Campaigns Influence the Collective Vision.
+            </p>
             {isConnected ? (
                 <Row gutter={16}>
                     <Col span={8}>
