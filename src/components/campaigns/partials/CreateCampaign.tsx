@@ -10,6 +10,10 @@ import mintUniqueToken from 'hooks/useMint';
 
 import ProgressSteps from "./ProgressSteps";
 
+import { useAccount } from "wagmi";
+
+import { useWeb3Modal } from '@web3modal/wagmi/react';
+
 const styles = {
     button: {
         height: "40px",
@@ -56,13 +60,15 @@ type FieldType = {
 const CreateCampaign: React.FC = () => {
     const [messageApi, contextHolder] = message.useMessage();
     const [minting, setMinting] = useState(false);
+    const {isConnected} = useAccount();
+    const { open } = useWeb3Modal();
 
     const onFinish = async (values: FieldType) => {
         try {
             setMinting(true);
 
             const result = await mintUniqueToken(values.nft_count, values.ipfs_metadata, values.description);
-    
+
             if (!result.success) {
                 messageApi.open({
                     type: 'error',
@@ -98,78 +104,98 @@ const CreateCampaign: React.FC = () => {
     return (
         <>
             {contextHolder}
-            <ProgressSteps step={1}/>
-            <Row style={{marginTop: '30px'}}>
-                <Col span={18} offset={3}>
-                    <Card title="Create a Campaign" bordered={true} style={{ paddingBottom: minting ? '50px' : 0 }}>
-                        {minting ? (
-                            <Spin tip="Minting NFTs..." size="large" style={{ marginTop: '25px' }}>
-                                <div className="content"/>
-                            </Spin>
-                        ) : (
-                            <Form
-                                name="basic"
-                                labelCol={{span: 4}}
-                                wrapperCol={{span: 18}}
-                                onFinish={onFinish}
-                                onFinishFailed={onFinishFailed}
-                                autoComplete="off"
-                            >
-                                <Form.Item<FieldType>
-                                    label="Name"
-                                    name="name"
-                                    rules={[{required: true, message: 'Input campaign name'}]}
-                                >
-                                    <Input placeholder="Enter campaign name"/>
-                                </Form.Item>
+            <h1>Create a Campaign</h1>
+            <p>
+                Welcome to our unique shopping platform. Experience a whole new world of online shopping where
+                quality
+                meets convenience. Explore our vast range of products, savor exclusive discounts, and enjoy
+                seamless
+                browsing. Your satisfaction is our promise!
+            </p>
+            {!isConnected ? (
+                <div style={{textAlign: 'center', marginTop: '30px'}}>
+                    <Button shape="round" type="primary" style={styles.button} onClick={() => open()}>
+                        Connect to Create Campaign
+                    </Button>
+                </div>
+            ) : (
+                <div style={{marginTop: '50px'}}>
+                    <ProgressSteps step={1}/>
+                    <Row style={{marginTop: '30px'}}>
+                        <Col span={18} offset={3}>
+                            <Card title="Create a Campaign" bordered={true}
+                                  style={{paddingBottom: minting ? '50px' : 0}}>
+                                {minting ? (
+                                    <Spin tip="Minting NFTs..." size="large" style={{marginTop: '25px'}}>
+                                        <div className="content"/>
+                                    </Spin>
+                                ) : (
+                                    <Form
+                                        name="basic"
+                                        labelCol={{span: 4}}
+                                        wrapperCol={{span: 18}}
+                                        onFinish={onFinish}
+                                        onFinishFailed={onFinishFailed}
+                                        autoComplete="off"
+                                    >
+                                        <Form.Item<FieldType>
+                                            label="Name"
+                                            name="name"
+                                            rules={[{required: true, message: 'Input campaign name'}]}
+                                        >
+                                            <Input placeholder="Enter campaign name"/>
+                                        </Form.Item>
 
-                                <Form.Item<FieldType>
-                                    label="Description"
-                                    name="description"
-                                    rules={[{required: true, message: 'Input campaign description'}]}
-                                >
-                                    <TextArea rows={6} placeholder="Enter campaign description" maxLength={300}/>
-                                </Form.Item>
+                                        <Form.Item<FieldType>
+                                            label="Description"
+                                            name="description"
+                                            rules={[{required: true, message: 'Input campaign description'}]}
+                                        >
+                                            <TextArea rows={6} placeholder="Enter campaign description"
+                                                      maxLength={300}/>
+                                        </Form.Item>
 
-                                <Form.Item<FieldType>
-                                    label="NFT Count"
-                                    rules={[{required: true, message: 'Select campaign NFT count'}]}
-                                    name="nft_count"
-                                >
-                                    <InputNumber min={1} max={10000} placeholder={'Enter NFT count'}/>
-                                </Form.Item>
+                                        <Form.Item<FieldType>
+                                            label="NFT Count"
+                                            rules={[{required: true, message: 'Select campaign NFT count'}]}
+                                            name="nft_count"
+                                        >
+                                            <InputNumber min={1} max={10000} placeholder={'Enter NFT count'}/>
+                                        </Form.Item>
 
-                                <Form.Item<FieldType>
-                                    label="IPFS metadata"
-                                    name="ipfs_metadata"
-                                    rules={[{required: true, message: 'Input campaign IPFS metadata'}]}
-                                >
-                                    <Input placeholder="Enter campaign IPFS metadata"/>
-                                </Form.Item>
+                                        <Form.Item<FieldType>
+                                            label="IPFS metadata"
+                                            name="ipfs_metadata"
+                                            rules={[{required: true, message: 'Input campaign IPFS metadata'}]}
+                                        >
+                                            <Input placeholder="Enter campaign IPFS metadata"/>
+                                        </Form.Item>
 
-                                <Form.Item<FieldType>
-                                    label="End Date"
-                                    rules={[{required: true, message: 'Select campaign end date'}]}
-                                    name="end_date"
-                                >
-                                    <DatePicker
-                                        format="YYYY-MM-DD HH:mm:ss"
-                                        disabledDate={disabledDate}
-                                        disabledTime={disabledDateTime}
-                                        showTime={{defaultValue: dayjs('00:00:00', 'HH:mm:ss')}}
-                                    />
-                                </Form.Item>
+                                        <Form.Item<FieldType>
+                                            label="End Date"
+                                            rules={[{required: true, message: 'Select campaign end date'}]}
+                                            name="end_date"
+                                        >
+                                            <DatePicker
+                                                format="YYYY-MM-DD HH:mm:ss"
+                                                disabledDate={disabledDate}
+                                                disabledTime={disabledDateTime}
+                                                showTime={{defaultValue: dayjs('00:00:00', 'HH:mm:ss')}}
+                                            />
+                                        </Form.Item>
 
-                                <Form.Item wrapperCol={{offset: 10, span: 12}} style={{marginTop: '40px'}}>
-                                    <Button type="primary" htmlType="submit" style={styles.button}>
-                                        Create Campaign
-                                    </Button>
-                                </Form.Item>
-                            </Form>
-                        )}
-                    </Card>
-                </Col>
-            </Row>
+                                        <Form.Item wrapperCol={{offset: 10, span: 12}} style={{marginTop: '40px'}}>
+                                            <Button type="primary" htmlType="submit" style={styles.button}>
+                                                Create Campaign
+                                            </Button>
+                                        </Form.Item>
+                                    </Form>
+                                )}
+                            </Card>
+                        </Col>
+                    </Row>
+                </div>
+            )}
         </>
     );
 };
