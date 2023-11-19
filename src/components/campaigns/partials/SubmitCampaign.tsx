@@ -96,7 +96,8 @@ const SubmitCampaign: React.FC = () => {
                     <ProgressSteps step={2}/>
                     <Row style={{marginTop: '30px'}}>
                         <Col span={18} offset={3}>
-                            <Card title="Add Campaign to Marketplace" bordered={true}>
+                            <Card title="Add Campaign to Marketplace" bordered={true}
+                                  style={{paddingBottom: loading ? '50px' : 0}}>
                                 {loading ? (
                                     <Spin tip="Submitting to Marketplace..." size="large" style={{marginTop: '25px'}}>
                                         <div className="content"/>
